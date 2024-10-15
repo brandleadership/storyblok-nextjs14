@@ -89,15 +89,14 @@ storyblokInit({
 });
 
 // Data fetching helper function (not exported)
-async function fetchData(slug) {
-  const sbParams = {
-    resolve_links: "url",
-    version: "draft",
-  };
+async function fetchData(slug: any) {
 
   const storyblokApi = getStoryblokApi();
   try {
-    const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    const { data } = await storyblokApi.get(`cdn/stories/${slug}`, {
+    resolve_links: "url",
+    version: "draft",
+  });
     return data.story;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -106,7 +105,7 @@ async function fetchData(slug) {
 }
 
 // The main Page component (this is the only thing exported)
-export default async function Page({ params }) {
+export default async function Page({ params } : any) {
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
   const story = await fetchData(slug);
 
