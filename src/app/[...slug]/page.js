@@ -81,33 +81,33 @@
 import { getStoryblokApi, apiPlugin, storyblokInit } from "@storyblok/react";
 import StoryblokStory from "@storyblok/react/story";
 
+// Initialize Storyblok
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
   use: [apiPlugin],
 });
 
-// Function to fetch Storyblok data based on slug
-async function fetchData(slug) {
-  const sbParams = {
-    resolve_links: "url",
-    version: "draft",
-  };
-
-  const storyblokApi = getStoryblokApi();
-  try {
-    const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-
-    return {
-      story: data.story,
-    };
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return null;
-  }
-}
-
 // This is the Page component that renders the Storyblok story based on the dynamic slug
 export default async function Page({ params }) {
+  // Helper function to fetch Storyblok data
+  async function fetchData(slug) {
+    const sbParams = {
+      resolve_links: "url",
+      version: "draft", // Use "published" for production
+    };
+
+    const storyblokApi = getStoryblokApi();
+    try {
+      const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+      return {
+        story: data.story,
+      };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return null;
+    }
+  }
+
   // Determine the slug from params, default to "home"
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
   
@@ -152,3 +152,4 @@ export async function generateStaticParams() {
 
   return paths;
 }
+
