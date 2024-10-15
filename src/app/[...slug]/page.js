@@ -88,7 +88,7 @@ storyblokInit({
   use: [apiPlugin],
 });
 
-// Data fetching for dynamic pages
+// Data fetching helper function
 async function fetchData(slug) {
   const sbParams = {
     resolve_links: "url",
@@ -105,7 +105,7 @@ async function fetchData(slug) {
   }
 }
 
-// Page component
+// The main Page component
 export default async function Page({ params }) {
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
   const story = await fetchData(slug);
@@ -136,6 +136,8 @@ export async function generateStaticParams() {
 
   return paths;
 }
+
+
 
 
 
