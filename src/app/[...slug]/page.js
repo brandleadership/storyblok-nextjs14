@@ -80,19 +80,15 @@
 // }
 
 
-import { getStoryblokApi } from "@storyblok/react";
+import { getStoryblokApi, apiPlugin, storyblokInit  } from "@storyblok/react";
 import StoryblokStory from "@storyblok/react/story";
 
-export default async function Page({ params }) {
-  const slug = params?.slug?.join("/") || "home";
-  const story = await fetchData(slug);
 
-  return (
-    <div>
-      <StoryblokStory story={story} />
-    </div>
-  );
-}
+
+storyblokInit({
+  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
+  use: [apiPlugin],
+});
 
 async function fetchData(slug) {
   const storyblokApi = getStoryblokApi();
@@ -109,6 +105,17 @@ async function fetchData(slug) {
   }
 }
 
+export default async function Page({ params }) {
+  const slug = params?.slug?.join("/") || "home";
+  const story = await fetchData(slug);
+
+  return (
+    <div>
+      <StoryblokStory story={story} />
+    </div>
+  );
+}
+
 export async function generateStaticParams() {
   const storyblokApi = getStoryblokApi();
   const { data } = await storyblokApi.get("cdn/links/", {
@@ -123,5 +130,4 @@ export async function generateStaticParams() {
 
   return paths;
 }
-
 
