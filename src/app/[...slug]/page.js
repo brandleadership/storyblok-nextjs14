@@ -89,11 +89,11 @@ storyblokInit({
 
 // This is the Page component that renders the Storyblok story based on the dynamic slug
 export default async function Page({ params }) {
-  // Helper function to fetch Storyblok data
+  // Internal helper function to fetch Storyblok data (not exported)
   async function fetchData(slug) {
     const sbParams = {
       resolve_links: "url",
-      version: "draft", // Use "published" for production
+      version: "draft", // Use "published" for production if needed
     };
 
     const storyblokApi = getStoryblokApi();
@@ -108,7 +108,7 @@ export default async function Page({ params }) {
     }
   }
 
-  // Determine the slug from params, default to "home"
+  // Determine the slug from params, default to "home" if no slug is provided
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
   
   // Fetch data from Storyblok API
