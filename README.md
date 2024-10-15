@@ -1,1 +1,1 @@
-# storyblok-nextjs14
+# storyblok-nextjs14 boilerplate
