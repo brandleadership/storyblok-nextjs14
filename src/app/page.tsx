@@ -5,14 +5,14 @@ export default async function Home() {
   const { data } = await fetchData();
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div>
       <StoryblokStory story={data.story} />
     </div>
   );
 }
-export async function fetchData() {
+async function fetchData() {
   let sbParams = { version: "draft" };
 
   const storyblokApi = getStoryblokApi();
-  return storyblokApi.get(`cdn/stories/home`, sbParams, { cache: "no-store" });
+  return storyblokApi.get(`cdn/stories/home`, { version: "draft" }, { cache: "no-store" });
 }
