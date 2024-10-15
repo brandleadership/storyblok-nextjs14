@@ -88,7 +88,7 @@ storyblokInit({
   use: [apiPlugin],
 });
 
-// Data fetching helper function
+// Data fetching helper function (not exported)
 async function fetchData(slug) {
   const sbParams = {
     resolve_links: "url",
@@ -105,13 +105,12 @@ async function fetchData(slug) {
   }
 }
 
-// The main Page component
+// The main Page component (this is the only thing exported)
 export default async function Page({ params }) {
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
   const story = await fetchData(slug);
 
   if (!story) {
-    // Handle the case where story is not found
     return <div>Story not found</div>;
   }
 
@@ -122,7 +121,7 @@ export default async function Page({ params }) {
   );
 }
 
-// Static params for static generation
+// Generate static paths for pre-rendering
 export async function generateStaticParams() {
   const storyblokApi = getStoryblokApi();
   const { data } = await storyblokApi.get("cdn/links/", { version: "draft" });
@@ -136,6 +135,7 @@ export async function generateStaticParams() {
 
   return paths;
 }
+
 
 
 
