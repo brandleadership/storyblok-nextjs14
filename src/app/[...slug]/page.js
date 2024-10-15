@@ -90,24 +90,24 @@ storyblokInit({
   use: [apiPlugin],
 });
 
-export default async function Page({ params }) {
-  async function fetchData(slug) {
-    const storyblokApi = getStoryblokApi();
-    const sbParams = {
-      version: "draft",
-    };
+async function getStory(slug) {
+  const storyblokApi = getStoryblokApi();
+  const sbParams = {
+    version: "draft",
+  };
 
-    try {
-      const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-      return data.story;
-    } catch (error) {
-      console.error("Error fetching Storyblok data:", error);
-      return null;
-    }
+  try {
+    const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    return data.story;
+  } catch (error) {
+    console.error("Error fetching Storyblok data:", error);
+    return null;
   }
+}
 
+export default async function Page({ params }) {
   const slug = params?.slug?.join("/") || "home";
-  const story = await fetchData(slug);
+  const story = await getStory(slug);
 
   return (
     <div>
@@ -122,13 +122,11 @@ export async function generateStaticParams() {
     version: "draft",
   });
 
-  const paths = Object.values(data.links)
+  return Object.values(data.links)
     .filter(link => !link.is_folder && link.slug !== "home")
     .map(link => ({
       slug: link.slug.split("/"),
     }));
-
-  return paths;
 }
 
 
