@@ -89,7 +89,7 @@ storyblokInit({
 
 // This is the Page component that renders the Storyblok story based on the dynamic slug
 export default async function Page({ params }) {
-  // Internal helper function to fetch Storyblok data (not exported)
+  // Helper function to fetch Storyblok data (no export)
   async function fetchData(slug) {
     const sbParams = {
       resolve_links: "url",
@@ -152,4 +152,3 @@ export async function generateStaticParams() {
 
   return paths;
 }
-
