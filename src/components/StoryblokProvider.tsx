@@ -1,10 +1,10 @@
 "use client";
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 /** Import your components */
-import Page from "./Page";
-import Header from "./Header";
-import Hero from "./Hero";
-import RichtextExample from "./RichtextExample";
+import Page from "./sections/Page";
+import Header from "./sections/Header";
+import Hero from "./sections/Hero";
+import RichtextExample from "./sections/RichtextExample";
 
 const components = {
   page: Page,

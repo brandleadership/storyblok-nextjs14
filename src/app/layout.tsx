@@ -11,7 +11,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <StoryblokProvider>
       <html lang="en">
-        <body>{children}</body>
+        <body>
+          <div></div>
+          <div>{children}</div>
+        </body>
       </html>
     </StoryblokProvider>
   );
