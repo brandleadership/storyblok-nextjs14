@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 
-const Header = ({ blok }: any) => (
+const Footer = ({ blok }: any) => (
   <section {...storyblokEditable(blok)}>
     <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
       
@@ -11,4 +11,4 @@ const Header = ({ blok }: any) => (
   </section>
 );
 
-export default Header;
+export default Footer;
