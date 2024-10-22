@@ -52,6 +52,9 @@ export default [
             'no-constant-binary-expression': 'off',
             'react/no-unescaped-entities': 'off',
             'react/no-string-refs': 'off',
+            '@typescript-eslint': 'off',
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/ban-ts-comment': 'off',
         },
     },
 ];
