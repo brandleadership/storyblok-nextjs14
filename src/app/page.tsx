@@ -4,8 +4,8 @@ import type {
 } from '@storyblok/react/rsc';
 import { getStoryblokApi } from "@storyblok/react/rsc";
 import StoryblokStory from "@storyblok/react/story";
-import Header from "../components/sections/Header";
-import Footer from "../components/sections/Footer";
+import ConfigHeader from "../components/sections/ConfigHeader";
+import ConfigFooter from "../components/sections/ConfigFooter";
 
 export default async function Home() {
   // @ts-ignore
@@ -13,11 +13,9 @@ export default async function Home() {
 
   return (
     <div>
-      {JSON.stringify(header)}
-      {JSON.stringify(footer)}
-      <Header blok={header} />
+      <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
-      <Footer blok={footer} />
+      <ConfigFooter blok={footer.content} />
     </div>
   );
 }
@@ -38,8 +36,8 @@ async function fetchData() {
             'cdn/stories/global/footer',
             sbParams
     );
-    console.log(header.data.story.content)
-    return { story: data.story, header: header.data.story.content, footer: footer.data.story.content };
+    
+    return { story: data.story, header: header.data.story, footer: footer.data.story };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
