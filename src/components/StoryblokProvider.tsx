@@ -13,8 +13,8 @@ const components = {
   page: Page,
   ConfigHeader: ConfigHeader,
   ConfigFooter: ConfigFooter,
-  Header: Header,
-  Footer: Footer,
+  header: Header,
+  footer: Footer,
   hero: Hero,
   richtext_example: RichtextExample,
 };
