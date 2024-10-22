@@ -1,11 +1,11 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
 
-const Global = ({ blok }: any) => (
-  <main {...storyblokEditable(blok)}>
-    {blok.body.map((nestedBlok: any) => (
+const Global = ({ blok }: any) => {
+ return ( <main {...storyblokEditable(blok)}>
+    {blok.global.map((nestedBlok: any) => (
       <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
     ))}
-  </main>
-);
+  </main>)
+};
 
 export default Global;
