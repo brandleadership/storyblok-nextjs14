@@ -2,6 +2,7 @@
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 /** Import your components */
 import Page from "./sections/Page";
+import Global from "./sections/Global";
 import ConfigHeader from "./sections/ConfigHeader";
 import ConfigFooter from "./sections/ConfigFooter";
 import Header from "./sections/Header";
@@ -11,6 +12,7 @@ import RichtextExample from "./sections/RichtextExample";
 
 const components = {
   page: Page,
+  global: Global,
   ConfigHeader: ConfigHeader,
   ConfigFooter: ConfigFooter,
   header: Header,
