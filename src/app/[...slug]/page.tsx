@@ -4,6 +4,8 @@ import type {
 } from '@storyblok/react/rsc';
 import { getStoryblokApi, apiPlugin, storyblokInit } from "@storyblok/react";
 import StoryblokStory from "@storyblok/react/story";
+import ConfigHeader from "../../components/sections/ConfigHeader";
+import ConfigFooter from "../../components/sections/ConfigFooter";
 
 // Initialize Storyblok
 storyblokInit({
@@ -21,11 +23,16 @@ async function fetchData(slug: any) {
   const storyblokApi = getStoryblokApi();
   try {
     const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-    const header = await storyblokApi.get(
+     const header = await storyblokApi.get(
             'cdn/stories/global/header',
             sbParams
-        );
-    return { story: data.story, header: header.data.story };
+    );
+    const footer = await storyblokApi.get(
+            'cdn/stories/global/footer',
+            sbParams
+    );
+    
+    return { story: data.story, header: header.data.story, footer: footer.data.story };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
@@ -35,7 +42,8 @@ async function fetchData(slug: any) {
 // The main Page component (this is the only thing exported)
 export default async function Page({ params } : any) {
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
-  const story = await fetchData(slug);
+   // @ts-ignore
+  const { story, header, footer } = await fetchData(slug);
 
   if (!story) {
     return <div>Story not found</div>;
@@ -43,7 +51,9 @@ export default async function Page({ params } : any) {
 
   return (
     <div>
+      <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
+      <ConfigFooter blok={footer.content} />
     </div>
   );
 }
