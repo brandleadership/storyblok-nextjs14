@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <div>
-      {env}
+      {JSON.stringify(env)}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
       <ConfigFooter blok={footer.content} />
@@ -60,7 +60,7 @@ async function fetchData() {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story, env: getVersion() };
+    return { story: data.story, header: header.data.story, footer: footer.data.story, env: headers() };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
