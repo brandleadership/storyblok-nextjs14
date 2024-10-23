@@ -6,6 +6,7 @@ import { getStoryblokApi } from "@storyblok/react/rsc";
 import StoryblokStory from "@storyblok/react/story";
 import ConfigHeader from "../components/sections/ConfigHeader";
 import ConfigFooter from "../components/sections/ConfigFooter";
+import { draftMode } from 'next/headers'
 
 export default async function Home() {
   // @ts-ignore
@@ -19,9 +20,18 @@ export default async function Home() {
     </div>
   );
 }
+
+
+const isDev = process.env.NODE_ENV === 'development'
+export const revalidate = isDev ? 0 : 3600
+
 async function fetchData() {
-  const sbParams: ISbStoriesParams = {resolve_links: "url",
-      version: "published",
+  
+  const { isEnabled: isDraft } = draftMode()
+  const sbParams: ISbStoriesParams = {
+    resolve_links: "url",
+    
+     version: isDev || isDraft ? 'draft' : 'published',
     resolve_relations: [
             'global_reference.reference']}
 
