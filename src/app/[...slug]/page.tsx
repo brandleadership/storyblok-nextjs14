@@ -21,7 +21,7 @@ export const revalidate = isDev ? 0 : 3600
 async function fetchData(slug: string) {
   const { isEnabled: isDraft } = draftMode()
   const sbParams: ISbStoriesParams = {resolve_links: "url",
-     version: isDev || isDraft ? 'draft' : 'published',
+     version: 'draft',
     resolve_relations: [
             'global_reference.reference']}
 
