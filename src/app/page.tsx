@@ -2,6 +2,8 @@ import type {
   ISbStoriesParams,
   StoryblokClient,
 } from '@storyblok/react/rsc';
+import { usePathname } from 'next/navigation';
+import { headers } from 'next/headers';
 import { getStoryblokApi } from "@storyblok/react/rsc";
 import StoryblokStory from "@storyblok/react/story";
 import ConfigHeader from "../components/sections/ConfigHeader";
@@ -10,11 +12,10 @@ import { draftMode } from 'next/headers'
 
 export default async function Home() {
   // @ts-ignore
-  const { story, header, footer, process, env } = await fetchData();
+  const { story, header, footer, env } = await fetchData();
 
   return (
     <div>
-      <div>{JSON.stringify(process)}</div>
       {env}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
@@ -24,17 +25,26 @@ export default async function Home() {
 }
 
 
+const getVersion = () => {
+   const heads = headers()
+
+ const pathname = heads.get("x-forwarded-host") || "";
+  console.log("pathname", pathname)
+  if (pathname?.includes("_storyblok_published")) {
+    return 'published'
+  } else {
+    return 'draft'
+  }
+}
 const isDev = process.env.NODE_ENV === 'development'
 export const revalidate = isDev ? 0 : 3600
-console.log("isDev", isDev, process.env)
 
 async function fetchData() {
   
-  const { isEnabled: isDraft } = draftMode()
   const sbParams: ISbStoriesParams = {
     resolve_links: "url",
     
-     version: isDev || isDraft ? 'draft' : 'published',
+     version: getVersion(),
     resolve_relations: [
             'global_reference.reference']}
 
@@ -50,7 +60,7 @@ async function fetchData() {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story, process: process.env, env: isDev || isDraft ? 'draft' : 'published' };
+    return { story: data.story, header: header.data.story, footer: footer.data.story, env: getVersion() };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
