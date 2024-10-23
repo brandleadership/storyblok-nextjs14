@@ -2,7 +2,8 @@ import type {
   ISbStoriesParams,
   StoryblokClient,
 } from '@storyblok/react/rsc';
-import { usePathname  } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { headers } from 'next/headers';
 import { getStoryblokApi } from "@storyblok/react/rsc";
 import StoryblokStory from "@storyblok/react/story";
 import ConfigHeader from "../components/sections/ConfigHeader";
@@ -25,8 +26,11 @@ export default async function Home() {
 
 
 const getVersion = () => {
-  const pathname  = usePathname();
-  if (pathname.includes("_storyblok_published")) {
+   const heads = headers()
+
+ const pathname = heads.get("x-forwarded-host") || "";
+  console.log("pathname", pathname)
+  if (pathname?.includes("_storyblok_published")) {
     return 'published'
   } else {
     return 'draft'
