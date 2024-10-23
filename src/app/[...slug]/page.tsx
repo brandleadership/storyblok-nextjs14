@@ -6,6 +6,7 @@ import { getStoryblokApi, apiPlugin, storyblokInit } from "@storyblok/react";
 import StoryblokStory from "@storyblok/react/story";
 import ConfigHeader from "../../components/sections/ConfigHeader";
 import ConfigFooter from "../../components/sections/ConfigFooter";
+import { draftMode } from 'next/headers'
 
 // Initialize Storyblok
 storyblokInit({
@@ -13,10 +14,14 @@ storyblokInit({
   use: [apiPlugin],
 });
 
+const isDev = process.env.NODE_ENV === 'development'
+export const revalidate = isDev ? 0 : 3600
+
 // Data fetching helper function (not exported)
-async function fetchData(slug: any) {
+async function fetchData(slug: string) {
+  const { isEnabled: isDraft } = draftMode()
   const sbParams: ISbStoriesParams = {resolve_links: "url",
-      version: "draft",
+     version: isDev || isDraft ? 'draft' : 'published',
     resolve_relations: [
             'global_reference.reference']}
 
