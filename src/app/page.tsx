@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (
     <div>
-      <div>{process}</div>
+      <div>{JSON.stringify(process)}</div>
       {env}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
