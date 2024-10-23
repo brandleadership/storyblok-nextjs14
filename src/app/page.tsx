@@ -24,6 +24,7 @@ export default async function Home() {
 
 const isDev = process.env.NODE_ENV === 'development'
 export const revalidate = isDev ? 0 : 3600
+console.log("isDev", isDev, process.env)
 
 async function fetchData() {
   
