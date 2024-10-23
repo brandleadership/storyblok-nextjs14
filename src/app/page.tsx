@@ -27,7 +27,7 @@ export default async function Home() {
 
 const getVersion = () => {
   const route = useLocation()
-  if (route.pathname.contains("_storyblok_published")) {
+  if (route.pathname.includes("_storyblok_published")) {
     return 'published'
   } else {
     return 'draft'
@@ -59,7 +59,7 @@ async function fetchData() {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story, process: process.env, env:  getVersion() };
+    return { story: data.story, header: header.data.story, footer: footer.data.story, env:  getVersion() };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
