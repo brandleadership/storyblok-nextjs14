@@ -2,7 +2,7 @@ import type {
   ISbStoriesParams,
   StoryblokClient,
 } from '@storyblok/react/rsc';
-import { useLocation } from 'react-router-dom'
+import { usePathname  } from 'next/navigation';
 import { getStoryblokApi } from "@storyblok/react/rsc";
 import StoryblokStory from "@storyblok/react/story";
 import ConfigHeader from "../components/sections/ConfigHeader";
@@ -11,11 +11,10 @@ import { draftMode } from 'next/headers'
 
 export default async function Home() {
   // @ts-ignore
-  const { story, header, footer, process, env } = await fetchData();
+  const { story, header, footer, env } = await fetchData();
 
   return (
     <div>
-      <div>{JSON.stringify(process)}</div>
       {env}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
@@ -26,8 +25,8 @@ export default async function Home() {
 
 
 const getVersion = () => {
-  const route = useLocation()
-  if (route.pathname.includes("_storyblok_published")) {
+  const pathname  = usePathname();
+  if (pathname.includes("_storyblok_published")) {
     return 'published'
   } else {
     return 'draft'
@@ -35,11 +34,9 @@ const getVersion = () => {
 }
 const isDev = process.env.NODE_ENV === 'development'
 export const revalidate = isDev ? 0 : 3600
-console.log("isDev", isDev, process.env)
 
 async function fetchData() {
   
-  const { isEnabled: isDraft } = draftMode()
   const sbParams: ISbStoriesParams = {
     resolve_links: "url",
     
@@ -59,7 +56,7 @@ async function fetchData() {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story, env:  getVersion() };
+    return { story: data.story, header: header.data.story, footer: footer.data.story, env: getVersion() };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
