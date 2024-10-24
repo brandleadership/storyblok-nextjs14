@@ -12,11 +12,10 @@ import { draftMode } from 'next/headers'
 
 export default async function Home() {
   // @ts-ignore
-  const { story, header, footer, env } = await fetchData();
+  const { story, header, footer } = await fetchData();
 
   return (
     <div>
-      {JSON.stringify(env)}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
       <ConfigFooter blok={footer.content} />
@@ -60,7 +59,7 @@ async function fetchData() {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story, env: headers().get("x-search-paramethers-url") };
+    return { story: data.story, header: header.data.story, footer: footer.data.story };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
