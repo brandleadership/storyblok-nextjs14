@@ -19,9 +19,9 @@ export const revalidate = isDev ? 0 : 3600
 
 // Data fetching helper function (not exported)
 async function fetchData(slug: string) {
-  const { isEnabled: isDraft } = draftMode()
+   const { isEnabled: isDraft } = draftMode()
   const sbParams: ISbStoriesParams = {resolve_links: "url",
-     version: 'draft',
+    version: isDev || isDraft ? 'draft' : 'published',
     resolve_relations: [
             'global_reference.reference']}
 
@@ -37,7 +37,7 @@ async function fetchData(slug: string) {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story };
+    return { story: data.story, header: header.data.story, footer: footer.data.story, mode: isDraft };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
@@ -48,7 +48,7 @@ async function fetchData(slug: string) {
 export default async function Page({ params } : any) {
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
    // @ts-ignore
-  const { story, header, footer } = await fetchData(slug);
+  const { story, header, footer, mode } = await fetchData(slug);
 
   if (!story) {
     return <div>Story not found</div>;
@@ -56,6 +56,7 @@ export default async function Page({ params } : any) {
 
   return (
     <div>
+      {mode}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
       <ConfigFooter blok={footer.content} />
