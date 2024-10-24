@@ -29,7 +29,6 @@ const getVersion = () => {
    const heads = headers()
 
  const pathname = heads.get("x-search-paramethers-url") || "";
-  console.log("pathname", pathname)
   if (pathname?.includes("_storyblok_published")) {
     return 'published'
   } else {
@@ -40,7 +39,6 @@ const isDev = process.env.NODE_ENV === 'development'
 export const revalidate = isDev ? 0 : 3600
 
 async function fetchData() {
-  
   const sbParams: ISbStoriesParams = {
     resolve_links: "url",
     
@@ -60,7 +58,7 @@ async function fetchData() {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story, env: headers() };
+    return { story: data.story, header: header.data.story, footer: footer.data.story, env: headers().get("x-search-paramethers-url") };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
