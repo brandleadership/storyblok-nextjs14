@@ -1,4 +1,4 @@
-import Index, { revalidate } from './[...slug]/page'
+import Index, { revalidate } from './[...slug]/page';
 
-export { revalidate }
-export default Index
+export { revalidate };
+export default Index;
