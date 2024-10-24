@@ -56,7 +56,7 @@ export default async function Page({ params } : any) {
 
   return (
     <div>
-      {mode}
+      Test checking mode: {mode}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
       <ConfigFooter blok={footer.content} />
