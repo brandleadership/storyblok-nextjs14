@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   if (!body.story_id) {
     return new Response('Invalid request', { status: 401 })
   }
-  const storyblok = new StoryblokClient({ accessToken: process.env.STORYBLOK_TOKEN })
+  const storyblok = new StoryblokClient({ accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN })
   // Revalidate the path
   storyblok
     .get(`cdn/stories/${body.story_id}`, { version: 'published' })
