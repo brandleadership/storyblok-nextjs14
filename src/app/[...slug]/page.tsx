@@ -2,6 +2,7 @@ import type {
   ISbStoriesParams,
   StoryblokClient,
 } from '@storyblok/react/rsc';
+import { headers } from 'next/headers';
 import { getStoryblokApi, apiPlugin, storyblokInit } from "@storyblok/react";
 import StoryblokStory from "@storyblok/react/story";
 import ConfigHeader from "../../components/sections/ConfigHeader";
@@ -17,18 +18,32 @@ storyblokInit({
 const isDev = process.env.NODE_ENV === 'development'
 export const revalidate = isDev ? 0 : 3600
 
+
+const getVersion = () => {
+const heads = headers()
+
+ const pathname = heads.get("x-search-paramethers-url") || "";
+  if (pathname.includes("_storyblok_published")) {
+    return 'published'
+  } else if (pathname.includes("_storyblok")) {
+    return 'draft'
+  } else {
+    return 'published'
+  }
+}
 // Data fetching helper function (not exported)
 async function fetchData(slug: string) {
-   const { isEnabled: isDraft } = draftMode()
-  const sbParams: ISbStoriesParams = {resolve_links: "url",
-    version: isDev || isDraft ? 'draft' : 'published',
+  const sbParams: ISbStoriesParams = {
+    resolve_links: "url",
+    
+     version: getVersion(),
     resolve_relations: [
             'global_reference.reference']}
 
   const storyblokApi = getStoryblokApi();
   try {
     const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-     const header = await storyblokApi.get(
+    const header = await storyblokApi.get(
             'cdn/stories/global/header',
             sbParams
     );
@@ -37,7 +52,7 @@ async function fetchData(slug: string) {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story, mode: isDraft };
+    return { story: data.story, header: header.data.story, footer: footer.data.story, env: headers().get("x-search-paramethers-url") };
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
@@ -48,7 +63,7 @@ async function fetchData(slug: string) {
 export default async function Page({ params } : any) {
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
    // @ts-ignore
-  const { story, header, footer, mode } = await fetchData(slug);
+  const { story, header, footer, env } = await fetchData(slug);
 
   if (!story) {
     return <div>Story not found</div>;
@@ -56,7 +71,8 @@ export default async function Page({ params } : any) {
 
   return (
     <div>
-      Test checking mode: {mode}
+      
+      {JSON.stringify(env)}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
       <ConfigFooter blok={footer.content} />
