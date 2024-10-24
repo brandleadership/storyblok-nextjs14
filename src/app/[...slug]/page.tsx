@@ -51,9 +51,8 @@ async function fetchData(slug: string) {
             sbParams
     );
     
-    return { story: data.story, header: header.data.story, footer: footer.data.story, env: headers().get("x-search-paramethers-url") };
+    return { story: data.story, header: header.data.story, footer: footer.data.story };
   } catch (error) {
-    console.error("Error fetching data:", error);
     return null;
   }
 }
@@ -62,7 +61,7 @@ async function fetchData(slug: string) {
 export default async function Page({ params } : any) {
   const slug = Array.isArray(params?.slug) ? params.slug.join("/") : "home";
    // @ts-ignore
-  const { story, header, footer, env } = await fetchData(slug);
+  const { story, header, footer } = await fetchData(slug);
 
   if (!story) {
     return <div>Story not found</div>;
@@ -70,8 +69,6 @@ export default async function Page({ params } : any) {
 
   return (
     <div>
-      
-      {JSON.stringify(env)}
       <ConfigHeader blok={header.content} />
       <StoryblokStory story={story} />
       <ConfigFooter blok={footer.content} />
