@@ -26,13 +26,15 @@ export default async function Home() {
 
 
 const getVersion = () => {
-   const heads = headers()
+const heads = headers()
 
  const pathname = heads.get("x-search-paramethers-url") || "";
-  if (pathname?.includes("_storyblok_published")) {
+  if (pathname.includes("_storyblok_published")) {
     return 'published'
-  } else {
+  } else if (pathname.includes("_storyblok")) {
     return 'draft'
+  } else {
+    return 'published'
   }
 }
 const isDev = process.env.NODE_ENV === 'development'
