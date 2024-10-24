@@ -28,7 +28,7 @@ export default async function Home() {
 const getVersion = () => {
    const heads = headers()
 
- const pathname = heads.get("x-forwarded-host") || "";
+ const pathname = heads.get("x-search-paramethers-url") || "";
   console.log("pathname", pathname)
   if (pathname?.includes("_storyblok_published")) {
     return 'published'
