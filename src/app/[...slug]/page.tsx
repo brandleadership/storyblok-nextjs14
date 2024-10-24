@@ -7,7 +7,6 @@ import { getStoryblokApi, apiPlugin, storyblokInit } from "@storyblok/react";
 import StoryblokStory from "@storyblok/react/story";
 import ConfigHeader from "../../components/sections/ConfigHeader";
 import ConfigFooter from "../../components/sections/ConfigFooter";
-import { draftMode } from 'next/headers'
 
 // Initialize Storyblok
 storyblokInit({
@@ -84,7 +83,7 @@ export default async function Page({ params } : any) {
 export async function generateStaticParams() {
   const storyblokApi = getStoryblokApi();
   const sbParams: ISbStoriesParams = {resolve_links: "url",
-      version: "draft",
+      version: "published",
     resolve_relations: [
             'global_reference.reference']}
   const { data } = await storyblokApi.get("cdn/links/", sbParams);
