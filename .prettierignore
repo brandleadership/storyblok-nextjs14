@@ -1,0 +1,11 @@
+ node_modules
+ .next
+ .husky
+ coverage
+ .prettierignore
+ .stylelintignore
+ .eslintignore
+ stories
+ storybook-static
+ *.log
+ docs
