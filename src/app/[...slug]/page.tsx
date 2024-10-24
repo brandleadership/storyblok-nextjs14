@@ -1,4 +1,5 @@
 import type { ISbStoriesParams } from '@storyblok/react/rsc';
+import { headers } from 'next/headers';
 import { getStoryblokApi, apiPlugin, storyblokInit } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
 import ConfigHeader from '../../components/sections/ConfigHeader';
@@ -10,11 +11,27 @@ storyblokInit({
     use: [apiPlugin],
 });
 
+const isDev = process.env.NODE_ENV === 'development';
+export const revalidate = isDev ? 0 : 3600;
+
+const getVersion = () => {
+    const heads = headers();
+
+    const pathname = heads.get('x-search-paramethers-url') || '';
+    if (pathname.includes('_storyblok_published')) {
+        return 'published';
+    } else if (pathname.includes('_storyblok')) {
+        return 'draft';
+    } else {
+        return 'published';
+    }
+};
 // Data fetching helper function (not exported)
-async function fetchData(slug: any) {
+async function fetchData(slug: string) {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
-        version: 'draft',
+
+        version: getVersion(),
         resolve_relations: ['global_reference.reference'],
     };
 
@@ -39,7 +56,7 @@ async function fetchData(slug: any) {
             footer: footer.data.story,
         };
     } catch (error) {
-        console.error('Error fetching data:', error);
+        console.log('error: ', error);
         return null;
     }
 }
@@ -68,7 +85,7 @@ export async function generateStaticParams() {
     const storyblokApi = getStoryblokApi();
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
-        version: 'draft',
+        version: 'published',
         resolve_relations: ['global_reference.reference'],
     };
     const { data } = await storyblokApi.get('cdn/links/', sbParams);
