@@ -1,6 +1,11 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
+import { FooterStoryblok } from '../../../component-types-sb';
 
-const Footer = ({ blok }: any) => (
+interface FooterProps {
+    blok: FooterStoryblok;
+}
+
+const Footer = ({ blok }: FooterProps) => (
     <section {...storyblokEditable(blok)}>
         <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
             <p className="mb-8 text-lg font-normal text-gray-500 sm:px-16 lg:text-xl xl:px-48">

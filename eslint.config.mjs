@@ -12,6 +12,7 @@ export default [
     {
         files: ['**/*.{js,mjs,cjs,jsx}'],
     },
+
     {
         languageOptions: {
             parserOptions: {
@@ -35,6 +36,12 @@ export default [
     { ignores: ['.next/*'] },
     {
         rules: {
+            'prettier/prettier': [
+                'error',
+                {
+                    endOfLine: 'auto',
+                },
+            ],
             'react/prop-types': 'off',
             'react/react-in-jsx-scope': 'off',
             'sort-keys': 'off',
@@ -52,9 +59,7 @@ export default [
             'no-constant-binary-expression': 'off',
             'react/no-unescaped-entities': 'off',
             'react/no-string-refs': 'off',
-            '@typescript-eslint': 'off',
             '@typescript-eslint/no-explicit-any': 'off',
-            '@typescript-eslint/ban-ts-comment': 'off',
         },
     },
 ];
