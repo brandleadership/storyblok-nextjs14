@@ -17,8 +17,6 @@
         "@storyblok/react": "^3.0.15",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.7",
-        "dotenv": "^16.4.5",
-        "fs": "^0.0.1-security",
         "next": "14.0.4",
         "react": "^18",
         "react-dom": "^18",
