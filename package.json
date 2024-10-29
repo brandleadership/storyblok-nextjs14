@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "generate-sb-types": "storyblok-generate-ts source=./components.json target=./component-types-sb",
+        "generate-sb-types": "storyblok-generate-ts source=./components308723.json target=./component-types-sb",
         "proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
         "dev": "next dev",
         "build": "next build",
