@@ -1,5 +1,5 @@
-const Blockquote = ({ children }) => {
-    return <blockquote className="italic">{children}</blockquote>;
+const Blockquote = (children: any) => {
+    return <blockquote>{children}</blockquote>;
 };
 
 export default Blockquote;

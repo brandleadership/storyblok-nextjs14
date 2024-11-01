@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://vercel.com/template-storyblok-next/template-storyblok-nextjs14
+
+# Sitemaps
+Sitemap: https://vercel.com/template-storyblok-next/template-storyblok-nextjs14/sitemap.xml

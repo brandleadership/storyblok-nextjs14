@@ -9,7 +9,7 @@
 //     use: [apiPlugin],
 // });
 
-// const config= {
+// const config = {
 //     siteUrl:
 //         'https://vercel.com/template-storyblok-next/template-storyblok-nextjs14',
 //     generateRobotsTxt: true,
@@ -24,7 +24,7 @@
 //         const paths = data.stories.map((story) => ({
 //             loc: `/${story.full_slug}`,
 //             lastmod: story.published_at,
-//        }))
+//         }));
 //     },
 // };
 
