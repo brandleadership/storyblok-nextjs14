@@ -16,9 +16,11 @@
         "@storyblok/react": "^3.0.15",
         "autoprefixer": "^10.4.20",
         "next": "14.0.4",
+        "next-sitemap": "^4.2.3",
         "react": "^18",
         "react-dom": "^18",
-        "react-router-dom": "^6.27.0"
+        "react-router-dom": "^6.27.0",
+        "storyblok-rich-text-react-renderer": "^2.9.2"
     },
     "devDependencies": {
         "@eslint/js": "^9.13.0",
