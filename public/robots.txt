@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://vercel.com/template-storyblok-next/template-storyblok-nextjs14
+Host: https://template-storyblok-nextjs14-git-cba320-template-storyblok-next.vercel.app/
 
 # Sitemaps
-Sitemap: https://vercel.com/template-storyblok-next/template-storyblok-nextjs14/sitemap.xml
+Sitemap: https://template-storyblok-nextjs14-git-cba320-template-storyblok-next.vercel.app/sitemap.xml

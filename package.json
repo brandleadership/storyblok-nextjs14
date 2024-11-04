@@ -2,6 +2,7 @@
     "name": "storyblok-nextjs14",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
         "dev": "next dev",
@@ -10,7 +11,8 @@
         "lint": "eslint . --fix",
         "format": "prettier . --write",
         "precommit": "lint-staged",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "postbuild": "next-sitemap"
     },
     "dependencies": {
         "@storyblok/react": "^3.0.15",
