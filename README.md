@@ -22,6 +22,7 @@ module.exports = {
 # additional commands
 
 npm run build
+npx next-sitemap --config ./next-sitemap.config.js
 npx next-sitemap  (preview it locally)
 
 
