@@ -8,6 +8,7 @@ export function middleware(request: NextRequest) {
         stringSearchParamethers += `${key}=${item}`;
     });
     headers.set('x-search-paramethers-url', stringSearchParamethers);
+    headers.set('frame-ancestors', 'https://app.storyblok.com');
     return NextResponse.next({ headers });
 }
 
