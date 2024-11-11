@@ -1,3 +1,37 @@
+
+# storyblok-nextjs14 boilerplate
+
+## Installation of packadge:
+
+First, install the `next-sitemap` package:
+
+npm install next-sitemap or npm install if already installed by other developer
+
+# next-sitemap.config.js
+module.exports = {
+  siteUrl: 'https://www.yourdomain.com', // Change to your site URL
+  generateRobotsTxt: true, // (optional)
+  // ...other options
+};
+
+# packadge.json
+
+"scripts": {
+  "postbuild": "next-sitemap"
+}
+
+# additional commands
+
+npm run build
+npx next-sitemap --config ./next-sitemap.config.js
+npx next-sitemap  (preview it locally)
+
+
+**[Link to documentation!](https://www.npmjs.com/package/next-sitemap)**
+
+
+> **Important Note:** !!! Add languages according to the needs of the project.
+
 # Template for Storyblok & Next JS 14 Setup
 
 ## Purpose
@@ -70,3 +104,4 @@ If you want to create a new Project:
 2. For the local development setup, in Storyblok > Settings > Visual Editor, in Location (default environment), change the value to `https://localhost:3010/`. Add the other Preview links as soon as you've set them up in Vercel.
 
 3. Install and set up 'Vercel Deployments' App in Storyblok and connect it with Vercel Project.
+
