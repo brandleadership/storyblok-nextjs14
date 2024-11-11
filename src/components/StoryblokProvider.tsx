@@ -1,5 +1,6 @@
 'use client';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
+import { ReactNode } from 'react';
 /** Import your components */
 import Page from './sections/Page';
 import Global from './sections/Global';
@@ -9,6 +10,10 @@ import Header from './sections/Header';
 import Footer from './sections/Footer';
 import Hero from './sections/Hero';
 import RichtextExample from './sections/RichtextExample';
+
+interface StoryblokProviderProps {
+    children: ReactNode;
+}
 
 const components = {
     page: Page,
@@ -28,6 +33,8 @@ storyblokInit({
     components,
 });
 
-export default function StoryblokProvider({ children }: any) {
+export default function StoryblokProvider({
+    children,
+}: StoryblokProviderProps) {
     return children;
 }
