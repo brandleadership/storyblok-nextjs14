@@ -1,9 +1,25 @@
-import type { ISbStoriesParams } from '@storyblok/react/rsc';
+import type {
+    ISbStoriesParams,
+    ISbStoryData,
+    StoryblokClient,
+} from '@storyblok/react/rsc';
 import { headers } from 'next/headers';
 import { getStoryblokApi, apiPlugin, storyblokInit } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
 import ConfigHeader from '../../components/sections/ConfigHeader';
 import ConfigFooter from '../../components/sections/ConfigFooter';
+import { ConfigFooterProps } from '../../types/types';
+import { ConfigHeaderProps } from '../../types/types';
+
+type StoryblokPageProps = {
+    params: { slug?: string[] };
+};
+
+type StoryblokContent = {
+    story: ISbStoryData;
+    header: ISbStoryData;
+    footer: ISbStoryData;
+};
 
 // Initialize Storyblok
 storyblokInit({
@@ -14,9 +30,8 @@ storyblokInit({
 const isDev = process.env.NODE_ENV === 'development';
 export const revalidate = isDev ? 0 : 3600;
 
-const getVersion = () => {
+const getVersion = (): 'published' | 'draft' => {
     const heads = headers();
-
     const pathname = heads.get('x-search-paramethers-url') || '';
     if (pathname.includes('_storyblok_published')) {
         return 'published';
@@ -26,16 +41,16 @@ const getVersion = () => {
         return 'published';
     }
 };
+
 // Data fetching helper function (not exported)
-async function fetchData(slug: string) {
+async function fetchData(slug: string): Promise<StoryblokContent | null> {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
-
         version: getVersion(),
         resolve_relations: ['global_reference.reference'],
     };
 
-    const storyblokApi = getStoryblokApi();
+    const storyblokApi: StoryblokClient = getStoryblokApi();
     try {
         const { data } = await storyblokApi.get(
             `cdn/stories/${slug}`,
@@ -51,9 +66,9 @@ async function fetchData(slug: string) {
         );
 
         return {
-            story: data.story,
-            header: header.data.story,
-            footer: footer.data.story,
+            story: data.story as ISbStoryData,
+            header: header.data.story as ISbStoryData,
+            footer: footer.data.story as ISbStoryData,
         };
     } catch (error) {
         console.log('error: ', error);
@@ -62,20 +77,24 @@ async function fetchData(slug: string) {
 }
 
 // The main Page component (this is the only thing exported)
-export default async function Page({ params }: any) {
+export default async function Page({ params }: StoryblokPageProps) {
     const slug = Array.isArray(params?.slug) ? params.slug.join('/') : 'home';
-    // @ts-ignore
-    const { story, header, footer } = await fetchData(slug);
+    const fetchedData = await fetchData(slug);
 
-    if (!story) {
+    if (!fetchedData) {
         return <div>Story not found</div>;
     }
 
+    const { story, header, footer } = fetchedData;
+
     return (
         <div>
-            <ConfigHeader blok={header.content} />
+            <ConfigHeader blok={header.content as ConfigHeaderProps['blok']} />
             <StoryblokStory story={story} />
-            <ConfigFooter blok={footer.content} />
+            <ConfigFooter
+                blok={footer.content as ConfigFooterProps['blok']}
+            />{' '}
+            {/* Explicit type casting */}
         </div>
     );
 }
