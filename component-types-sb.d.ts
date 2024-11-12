@@ -131,6 +131,10 @@ export type MultilinkStoryblok =
 
 export interface HeaderStoryblok {
     logo?: AssetStoryblok;
+    logo_link?: Exclude<
+        MultilinkStoryblok,
+        { linktype?: 'email' } | { linktype?: 'asset' }
+    >;
     link_one?: Exclude<
         MultilinkStoryblok,
         { linktype?: 'email' } | { linktype?: 'asset' }
