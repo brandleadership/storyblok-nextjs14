@@ -6,13 +6,11 @@ interface FooterProps {
 }
 
 const Footer = ({ blok }: FooterProps) => (
-    <section {...storyblokEditable(blok)}>
-        <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
-            <p className="mb-8 text-lg font-normal text-gray-500 sm:px-16 lg:text-xl xl:px-48">
-                {JSON.stringify(blok)}
-            </p>
+    <footer {...storyblokEditable(blok)} className="px-4 py-2.5 lg:px-6">
+        <div className="text-left">
+            <p className="mb-8 text-lg font-normal">{blok.copyright}</p>
         </div>
-    </section>
+    </footer>
 );
 
 export default Footer;
