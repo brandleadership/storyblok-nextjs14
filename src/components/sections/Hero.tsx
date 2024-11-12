@@ -1,6 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
+import { HeroStoryblok } from '../../../component-types-sb';
 
-const Hero = ({ blok }: any) => (
+const Hero = ({ blok }: HeroStoryblok) => (
     <section {...storyblokEditable(blok)}>
         <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
             <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
