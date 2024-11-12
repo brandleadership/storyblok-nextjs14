@@ -6,19 +6,39 @@ interface HeaderProps {
 }
 
 const Header = ({ blok }: HeaderProps) => (
-    <section {...storyblokEditable(blok)}>
-        <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
-            {blok.logo &&
-                blok.logo.filename && ( // Check both blok.logo and blok.logo.filename
+    <header {...storyblokEditable(blok)} className="px-4 py-2.5 lg:px-6">
+        <nav>
+            <div className="flex flex-wrap items-center justify-between">
+                <a href={blok.logo_link?.url || undefined}>
                     <img
-                        src={blok.logo.filename || undefined} // Use fallback to undefined if filename is null
-                        className="h-6 w-6"
-                        alt={blok.logo.alt || 'Logo'}
+                        src={blok.logo?.filename || undefined} // Use fallback to undefined if filename is null
+                        className="w-20"
+                        alt={blok.logo?.alt || 'Logo'}
                     />
-                )}
-            <p className="mb-8 text-lg font-normal text-gray-500 sm:px-16 lg:text-xl xl:px-48"></p>
-        </div>
-    </section>
+                </a>
+                <div className="flex flex-wrap items-center justify-end">
+                    <a
+                        className="px-4 text-lg font-normal hover:underline"
+                        href={blok.link_one?.url || undefined}
+                    >
+                        {blok.link_one_text}
+                    </a>
+                    <a
+                        className="px-4 text-lg font-normal hover:underline"
+                        href={blok.link_two?.url || undefined}
+                    >
+                        {blok.link_two_text}
+                    </a>
+                    <a
+                        className="px-4 text-lg font-normal hover:underline"
+                        href={blok.link_three?.url || undefined}
+                    >
+                        {blok.link_three_text}
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
 );
 
 export default Header;
