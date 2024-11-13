@@ -12,11 +12,11 @@ import {
     render,
 } from 'storyblok-rich-text-react-renderer';
 
-import H1 from '../components/typography/H1';
-import H2 from '../components/typography/H2';
-import H3 from '../components/typography/H3';
-import H4 from '../components/typography/H4';
-import Text from '../components/typography/Text';
+import H1 from '../components/elements/typography/typography/H1';
+import H2 from '../components/elements/typography/typography/H2';
+import H3 from '../components/elements/typography/typography/H3';
+import H4 from '../components/elements/typography/typography/H4';
+import Text from '../components/elements/typography/typography/Text';
 
 interface RichTextRendererProps {
     text: string;
