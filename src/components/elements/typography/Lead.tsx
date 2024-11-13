@@ -1,5 +1,5 @@
 const Lead = (children: any) => {
-    return <p>{children}</p>;
+    return <p className="text-lg">{children}</p>;
 };
 
 export default Lead;

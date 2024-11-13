@@ -1,5 +1,5 @@
 const Text = (children: any) => {
-    return <p>{children}</p>;
+    return <p className="text-base">{children}</p>;
 };
 
 export default Text;
