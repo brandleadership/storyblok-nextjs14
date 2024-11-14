@@ -24,10 +24,7 @@ export default function RootLayout({
     return (
         <StoryblokProvider>
             <html lang="en">
-                <body>
-                    <div></div>
-                    <div>{children}</div>
-                </body>
+                <body>{children}</body>
             </html>
         </StoryblokProvider>
     );
