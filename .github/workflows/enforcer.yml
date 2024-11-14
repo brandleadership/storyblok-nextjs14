@@ -1,9 +1,9 @@
 name: branch-check
 
 on:
-    pull_request:
+    pull:
         branches:
-            - 'main'
+            - main
 
 jobs:
     check_branch:
@@ -12,5 +12,6 @@ jobs:
             - name: Check branch
               if: github.base_ref == 'main' && github.head_ref != 'develop'
               run: |
+                  echo github.base_ref
                   echo "ERROR: You can only merge to main from develop."
                   exit 1
