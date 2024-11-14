@@ -2,9 +2,9 @@ name: 'branch-check'
 
 on:
     pull_request:
-        types: [opened, reopened]
-        branches:
-            - 'main'
+        types:
+            - 'opened'
+            - 'reopened'
 
 jobs:
     check_branch:
