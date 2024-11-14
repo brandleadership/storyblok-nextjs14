@@ -18,7 +18,7 @@
         "@storyblok/react": "^3.0.15",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.7",
-        "next": "14.0.4",
+        "next": "^14.2.18",
         "next-sitemap": "^4.2.3",
         "react": "^18",
         "react-dom": "^18",
