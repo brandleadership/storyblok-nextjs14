@@ -1,7 +1,7 @@
 'use client';
 
 export default function Link(
-    { children }: { children: string | React.ReactElement },
+    { children }: { children: React.ReactNode },
     href: string
 ) {
     return (

@@ -1,5 +1,9 @@
-const Blockquote = (children: any) => {
-    return <blockquote className="">{children}</blockquote>;
-};
+'use client';
 
-export default Blockquote;
+export default function Blockquote({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    return <blockquote className="">{children}</blockquote>;
+}
