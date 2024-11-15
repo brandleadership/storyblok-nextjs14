@@ -1,8 +1,6 @@
 name: 'branch-check-second'
 
-on:
-    pull_request:
-        branches: [main]
+on: pull_request
 
 jobs:
     check_branch_test:
@@ -11,6 +9,6 @@ jobs:
         steps:
             - name: Stop merging branches
               run: |
-                  echo 'Hi ${{ contains(github.base_ref, "main") }}'
+                  echo 'Hi ${{ github.head_ref }}'
                   echo "ERROR: You can only merge to main from develop copy."
                   exit 1
