@@ -9,6 +9,7 @@ jobs:
         steps:
             - name: Stop merging
               run: |
-                  echo 'Hi ${{ github.base_ref }}'
+                  echo 'base_ref ${{ github.base_ref }}'
+                  echo 'head_ref ${{ github.head_ref }}'
                   echo "ERROR: You can only merge to main from develop."
                   exit 1
