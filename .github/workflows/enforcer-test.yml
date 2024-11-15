@@ -1,11 +1,11 @@
 name: 'branch-check-second'
 
 on:
-    push:
+    pull_request:
         branches: [main]
 
 jobs:
-    check_branch:
+    check_branch_test:
         if: contains(github.base_ref, 'main') && contains(github.head_ref, 'develop')
         runs-on: ubuntu-latest
         steps:
