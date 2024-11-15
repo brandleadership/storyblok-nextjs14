@@ -1,12 +1,12 @@
 name: 'branch-check'
 
 on:
-    pull_request:
+    push:
         branches: [main]
 
 jobs:
     check_branch:
-        if: contains(fromJson('["master", "main"]'), github.base_ref) && github.head_ref != 'develop'
+        if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
         steps:
             - name: Stop merging

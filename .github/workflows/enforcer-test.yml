@@ -1,0 +1,15 @@
+name: 'branch-check-second'
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    check_branch:
+        if: contains(github.base_ref, 'main') && contains(github.head_ref, 'develop')
+        runs-on: ubuntu-latest
+        steps:
+            - name: Stop merging
+              run: |
+                  echo "ERROR: You can only merge to main from develop copy."
+                  exit 1
