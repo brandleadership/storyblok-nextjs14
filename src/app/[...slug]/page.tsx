@@ -43,9 +43,7 @@ const getVersion = (): 'published' | 'draft' => {
 };
 
 // Data fetching helper function (not exported)
-export async function fetchData(
-    slug: string
-): Promise<StoryblokContent | null> {
+async function fetchData(slug: string): Promise<StoryblokContent | null> {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
         version: getVersion(),
