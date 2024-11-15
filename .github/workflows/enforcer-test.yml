@@ -9,7 +9,8 @@ jobs:
         if: contains(github.base_ref, 'main') && contains(github.head_ref, 'develop')
         runs-on: ubuntu-latest
         steps:
-            - name: Stop merging
-                    run: |
+            - name: Stop merging branches
+              run: |
+                  echo 'Hi ${{ contains(github.base_ref, "main") }}'
                   echo "ERROR: You can only merge to main from develop copy."
                   exit 1
