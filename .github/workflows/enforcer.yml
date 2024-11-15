@@ -1,9 +1,8 @@
 name: 'branch-check'
 
 on:
-    push:
-        branches:
-            - 'main'
+    pull_request:
+        branches: [main]
 
 jobs:
     check_branch:
