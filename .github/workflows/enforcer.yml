@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
     check_branch:
-        if: ${{ github.base_ref == 'main' }}
+        if: ${{ github.base_ref }}
         runs-on: ubuntu-latest
         steps:
             - name: Stop merging
