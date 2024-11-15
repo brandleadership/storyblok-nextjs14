@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
     check_branch_test:
-        if: ${{ github.head_ref }}
+        if: ${{ github.head_ref  == 'develop' }}
         runs-on: ubuntu-latest
         steps:
             - name: Stop merging branches
