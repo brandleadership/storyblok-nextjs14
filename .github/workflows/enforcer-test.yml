@@ -10,6 +10,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Stop merging
-              run: |
+                    run: |
                   echo "ERROR: You can only merge to main from develop copy."
                   exit 1

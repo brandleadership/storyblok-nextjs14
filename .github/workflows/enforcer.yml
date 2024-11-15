@@ -6,11 +6,10 @@ on:
 
 jobs:
     check_branch:
-        if: github.ref == 'refs/heads/main'
+        if: github.base_ref == 'main'
         runs-on: ubuntu-latest
         steps:
             - name: Stop merging
               run: |
-                  echo github.base_ref
                   echo "ERROR: You can only merge to main from develop."
                   exit 1
