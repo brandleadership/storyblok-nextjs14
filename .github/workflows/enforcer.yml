@@ -10,6 +10,9 @@ jobs:
         steps:
             - name: Check branch
               if: contains(fromJson('["master", "main"]'), github.base_ref) && github.head_ref != 'develop'
-              run: |
-                  echo "ERROR: You can only merge to main from develop."
-                  exit 1
+              steps:
+                - name: Disable merging
+                    run: |
+                        echo github.base_ref
+                        echo "ERROR: You can only merge to main from develop."
+                        exit 1
