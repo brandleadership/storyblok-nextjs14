@@ -1,4 +1,3 @@
-'use client';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import { ReactNode } from 'react';
 /** Import your components */
