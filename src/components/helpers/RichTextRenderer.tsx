@@ -89,16 +89,6 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                         );
                     },
                 },
-                // blokResolvers: {
-                //     ['cta-small']: (blokProps) => (
-
-                //         <ButtonPrimary
-                //             position="left"
-                //             buttonText={blokProps.CTA_text}
-                //             href={ButtonUrlRenderer(blokProps.CTA_link)}
-                //         />
-                //     ),
-                // },
                 nodeResolvers: {
                     [NODE_IMAGE]: (
                         children: React.ReactNode,
