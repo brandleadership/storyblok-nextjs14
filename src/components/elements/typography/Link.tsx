@@ -3,7 +3,7 @@ export default function Link(
     href: string
 ) {
     return (
-        <a className="text-base" href={href ?? '/#'}>
+        <a className="text-base xl:text-lg 2xl:text-xl" href={href ?? '/#'}>
             {children}
         </a>
     );
