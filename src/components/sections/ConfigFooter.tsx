@@ -8,7 +8,7 @@ const isFooterBlok = (blok: any): blok is FooterStoryblok =>
     blok.component === 'footer';
 
 const ConfigFooter = ({ blok }: ConfigFooterProps) => (
-    <section {...storyblokEditable(blok)}>
+    <section className="mt-auto" {...storyblokEditable(blok)}>
         {blok?.global?.map((nestedBlok) =>
             isFooterBlok(nestedBlok) ? (
                 <Footer blok={nestedBlok} key={nestedBlok._uid} />
