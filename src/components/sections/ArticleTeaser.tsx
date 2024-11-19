@@ -37,7 +37,7 @@ const ArticleTeaser = ({ article }: ArticleTeaserProps) => {
                 </div>
                 <div className="mt-4">
                     <Link
-                        href={`/${article.slug}`}
+                        href={`/all-articles/${article.slug}`}
                         className="mt-4 inline-flex items-center font-semibold text-blue-600 hover:text-neutral-600 lg:mb-0"
                         title="read more"
                     >

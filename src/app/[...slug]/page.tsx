@@ -79,6 +79,51 @@ async function fetchData(slug: string): Promise<StoryblokContent | null> {
     }
 }
 
+// Dynamic Metadata
+export async function generateMetadata({ params }: StoryblokPageProps) {
+    const slug = Array.isArray(params?.slug) ? params.slug.join('/') : 'home';
+
+    const data = await fetchData(slug);
+
+    if (!data || !data.story) {
+        return {};
+    }
+
+    const { story } = data;
+
+    const metatags = story.content.metatags || {};
+    const seoMeta = {
+        title: metatags.title || 'Default Title',
+        description: metatags.description || 'Default Description',
+        ogTitle: metatags.og_title || 'Default OG Title',
+        ogDescription: metatags.og_description || 'Default OG Description',
+        ogImage: metatags?.og_image || '',
+        twitterTitle: metatags.twitter_title || 'Default Twitter Title',
+        twitterDescription:
+            metatags.twitter_description || 'Default Twitter Description',
+        twitterImage: metatags?.twitter_image || '',
+    };
+
+    return {
+        metadataBase: new URL(
+            'https://template-storyblok-nextjs14.vercel.app/'
+        ),
+        title: seoMeta.title,
+        description: seoMeta.description,
+        openGraph: {
+            title: seoMeta.ogTitle,
+            description: seoMeta.ogDescription,
+            image: seoMeta?.ogImage,
+        },
+        twitter: {
+            card: 'summary',
+            title: seoMeta.twitterTitle,
+            description: seoMeta.twitterDescription,
+            image: seoMeta?.twitterImage,
+        },
+    };
+}
+
 // The main Page component (this is the only thing exported)
 export default async function Page({ params }: StoryblokPageProps) {
     const slug = Array.isArray(params?.slug) ? params.slug.join('/') : 'home';
@@ -91,11 +136,11 @@ export default async function Page({ params }: StoryblokPageProps) {
     const { story, header, footer } = fetchedData;
 
     return (
-        <div>
+        <>
             <ConfigHeader blok={header.content as ConfigHeaderProps['blok']} />
             <StoryblokStory story={story} />
             <ConfigFooter blok={footer.content as ConfigFooterProps['blok']} />
-        </div>
+        </>
     );
 }
 

@@ -1,19 +1,20 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { FooterStoryblok } from '../../../component-types-sb';
 import ContentWidth from '../layouts/ContentWidth';
+import Text from '../elements/typography/Text';
 
 interface FooterProps {
     blok: FooterStoryblok;
 }
 
 const Footer = ({ blok }: FooterProps) => (
-    <ContentWidth {...storyblokEditable(blok)}>
-        <footer className="px-4 py-2.5 lg:px-6">
+    <footer {...storyblokEditable(blok)}>
+        <ContentWidth>
             <div className="text-left">
-                <p className="mb-8 text-lg font-normal">{blok.copyright}</p>
+                <Text>{blok.copyright}</Text>
             </div>
-        </footer>
-    </ContentWidth>
+        </ContentWidth>
+    </footer>
 );
 
 export default Footer;
