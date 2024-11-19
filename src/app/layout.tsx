@@ -1,15 +1,6 @@
-import type { Metadata } from 'next';
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
 import StoryblokProvider from '../components/StoryblokProvider';
 import './globals.css';
-
-export const metadata: Metadata = {
-    title: {
-        default: 'Next.js Template project',
-        template: '%s - change with name of the home page',
-    },
-    description: 'Reusable template for Storyblok projects',
-};
 
 storyblokInit({
     accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
@@ -24,10 +15,7 @@ export default function RootLayout({
     return (
         <StoryblokProvider>
             <html lang="en">
-                <body>
-                    <div></div>
-                    <div>{children}</div>
-                </body>
+                <body>{children}</body>
             </html>
         </StoryblokProvider>
     );

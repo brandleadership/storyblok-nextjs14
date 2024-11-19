@@ -7,16 +7,17 @@ import {
     NODE_LI,
     NODE_OL,
     NODE_PARAGRAPH,
-    // NODE_QUOTE,
+    NODE_QUOTE,
     NODE_UL,
     render,
 } from 'storyblok-rich-text-react-renderer';
 
-import H1 from '../components/typography/H1';
-import H2 from '../components/typography/H2';
-import H3 from '../components/typography/H3';
-import H4 from '../components/typography/H4';
-import Text from '../components/typography/Text';
+import H1 from '../elements/typography/H1';
+import H2 from '../elements/typography/H2';
+import H3 from '../elements/typography/H3';
+import H4 from '../elements/typography/H4';
+import Text from '../elements/typography/Text';
+import Blockquote from '../elements/typography/Blockquote';
 
 interface RichTextRendererProps {
     text: string;
@@ -29,17 +30,30 @@ interface MarkLinkProps {
     target?: string;
 }
 
+interface NodeImageProps {
+    src?: string;
+    title?: string;
+    alt?: string;
+}
+
+interface NodeHeadingProps {
+    level: number;
+}
+
 const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
     return (
         <div className={`richtext ${props.customStyles}`}>
             {render(props.text, {
                 markResolvers: {
-                    [MARK_UNDERLINE]: (children) => (
+                    [MARK_UNDERLINE]: (children: React.ReactNode) => (
                         <span className="underline underline-offset-4">
                             {children}
                         </span>
                     ),
-                    [MARK_LINK]: (children, markProps: MarkLinkProps) => {
+                    [MARK_LINK]: (
+                        children: React.ReactNode,
+                        markProps: MarkLinkProps
+                    ) => {
                         const { linktype, href, target } = markProps;
                         if (linktype === 'email') {
                             return (
@@ -75,18 +89,11 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                         );
                     },
                 },
-                // blokResolvers: {
-                //     ['cta-small']: (blokProps) => (
-
-                //         <ButtonPrimary
-                //             position="left"
-                //             buttonText={blokProps.CTA_text}
-                //             href={ButtonUrlRenderer(blokProps.CTA_link)}
-                //         />
-                //     ),
-                // },
                 nodeResolvers: {
-                    [NODE_IMAGE]: (children, props) => (
+                    [NODE_IMAGE]: (
+                        children: React.ReactNode,
+                        props: NodeImageProps
+                    ) => (
                         <img
                             src={props.src}
                             title={props.title}
@@ -94,26 +101,30 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                             className="my-6"
                         />
                     ),
-                    // [NODE_QUOTE]: (children) => (
-
-                    //     <Blockquote>{children}</Blockquote>
-                    // ),
+                    [NODE_QUOTE]: (children: React.ReactNode) => (
+                        <Blockquote>{children}</Blockquote>
+                    ),
                     [NODE_HR]: () => <hr className="bg-greySolid-100 my-6" />,
-                    [NODE_PARAGRAPH]: (children) => <Text>{children}</Text>,
+                    [NODE_PARAGRAPH]: (children: React.ReactNode) => (
+                        <Text>{children}</Text>
+                    ),
                     [NODE_UL]: (children) => (
                         <ul className="my-6 list-inside list-disc">
                             {children}
                         </ul>
                     ),
-                    [NODE_OL]: (children) => (
+                    [NODE_OL]: (children: React.ReactNode) => (
                         <ol className="my-6 list-inside list-decimal">
                             {children}
                         </ol>
                     ),
-                    [NODE_LI]: (children) => (
+                    [NODE_LI]: (children: React.ReactNode) => (
                         <li className="px-2 py-2">{children}</li>
                     ),
-                    [NODE_HEADING]: (children, props) => {
+                    [NODE_HEADING]: (
+                        children: React.ReactNode,
+                        props: NodeHeadingProps
+                    ) => {
                         switch (props.level) {
                             case 1:
                                 return <div>{<H1>{children}</H1>}</div>;
