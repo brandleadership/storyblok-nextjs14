@@ -52,8 +52,14 @@ So, to set up components correctly we will work both in `StoryblokProvider.tsx` 
     3.2. Create a new top-level folder called global in which all of our global components will be located. Furthermore, let's use the Restrict content types setting in the folder configuration to ensure that all stories created in this folder will be of the global content type:
     ![alt text](../img/global-folder.png)
 
-    3.3. Inside global folder create 2 stories: header and footer.
+    3.3. Create 2 Nestable blocks that will be responsible for header and footer in our project.
+    Here is the setting for header:
+    ![alt text](../img/header-settings.png)
+    And the settings for footer:
+    ![alt text](../img/footer-settings.png)
 
-    3.4. Go to the Block Library menu and click on the New Block button. Create a new nestable component with the technical name `global_reference`. Then add a new field of the type References and name it `reference`.
+    3.4. Inside global folder create 2 stories: header and footer. And insert the header block in the Header story and the footer block in the Footer story.
+
+    3.5. Go to the Block Library menu and click on the New Block button. Create a new nestable component with the technical name `global_reference`. Then add a new field of the type References and name it `reference`.
     In the field configuration enter `global/` in Path to folder of stories. Also restrict the content type to `global`:
     ![alt text](../img/global-restrict.png)
