@@ -11,9 +11,9 @@ const AllArticles = ({
     useEffect(() => {
         const getArticles = async () => {
             const storyblokApi = getStoryblokApi();
-            //const validVersion = version as 'draft' | 'published' | undefined;
+            const validVersion = version as 'draft' | 'published' | undefined;
             const { data } = await storyblokApi.get(`cdn/stories`, {
-                version: 'draft',
+                version: validVersion,
                 starts_with: 'all-articles/',
                 is_startpage: false,
             });
