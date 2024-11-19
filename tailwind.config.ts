@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import forms from '@tailwindcss/forms';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
     content: [
@@ -38,6 +39,53 @@ const config: Config = {
             },
         },
     },
-    plugins: [forms],
+    plugins: [
+        forms,
+        plugin(function ({ addComponents, theme }) {
+            addComponents({
+                // Example Configuration for custom Elements
+                // These can be used like any other Tailwind class
+                '.btn': {
+                    padding: '.5rem 1rem',
+                    borderRadius: '.25rem',
+                },
+                '.btn-primary': {
+                    backgroundColor: theme('colors.primary.900'),
+                    color: '#fff',
+                    '&:hover': {
+                        backgroundColor: theme('colors.primary.700'),
+                    },
+                },
+                '.btn-secondary': {
+                    backgroundColor: theme('colors.secondary.900'),
+                    color: '#fff',
+                    '&:hover': {
+                        backgroundColor: theme('colors.secondary.700'),
+                    },
+                },
+                '.img-contain': {
+                    height: '100%',
+                    width: '100%',
+                    objectFit: 'contain',
+                },
+                '.img-cover': {
+                    height: '100%',
+                    width: '100%',
+                    objectFit: 'cover',
+                },
+            });
+        }),
+        plugin(function ({ addBase }) {
+            addBase({
+                // Opinionated Configuration targeting HTML Tags
+                body: {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: '100vh',
+                    overflowX: 'hidden',
+                },
+            });
+        }),
+    ],
 };
 export default config;
