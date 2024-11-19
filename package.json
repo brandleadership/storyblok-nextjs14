@@ -12,7 +12,7 @@
         "format": "prettier . --write",
         "precommit": "lint-staged",
         "prepare": "husky install",
-        "postbuild": "next-sitemap"
+        "postbuild": "npx next-sitemap --config ./next-sitemap.config.mjs"
     },
     "dependencies": {
         "@storyblok/react": "^3.0.15",
