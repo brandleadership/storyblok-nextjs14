@@ -30,7 +30,7 @@ storyblokInit({
 const isDev = process.env.NODE_ENV === 'development';
 export const revalidate = isDev ? 0 : 3600;
 
-export const getVersion = (): 'published' | 'draft' => {
+const getVersion = (): 'published' | 'draft' => {
     const heads = headers();
     const pathname = heads.get('x-search-paramethers-url') || '';
     if (pathname.includes('_storyblok_published')) {
