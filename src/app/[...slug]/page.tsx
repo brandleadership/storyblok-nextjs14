@@ -3,11 +3,11 @@ import type {
     ISbStoryData,
     StoryblokClient,
 } from '@storyblok/react/rsc';
-import { headers } from 'next/headers';
 import { getStoryblokApi, apiPlugin, storyblokInit } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
 import ConfigHeader from '../../components/sections/ConfigHeader';
 import ConfigFooter from '../../components/sections/ConfigFooter';
+import { getVersion } from '../../utils/getVersion';
 import { ConfigFooterProps } from '../../types/types';
 import { ConfigHeaderProps } from '../../types/types';
 
@@ -30,24 +30,15 @@ storyblokInit({
 const isDev = process.env.NODE_ENV === 'development';
 export const revalidate = isDev ? 0 : 3600;
 
-const getVersion = (): 'published' | 'draft' => {
-    const heads = headers();
-    const pathname = heads.get('x-search-paramethers-url') || '';
-    if (pathname.includes('_storyblok_published')) {
-        return 'published';
-    } else if (pathname.includes('_storyblok')) {
-        return 'draft';
-    } else {
-        return 'published';
-    }
-};
-
 // Data fetching helper function (not exported)
 async function fetchData(slug: string): Promise<StoryblokContent | null> {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
         version: getVersion(),
-        resolve_relations: ['global_reference.reference'],
+        resolve_relations: [
+            'global_reference.reference',
+            'popular-articles.articles',
+        ],
     };
 
     const storyblokApi: StoryblokClient = getStoryblokApi();
@@ -91,10 +82,7 @@ export default async function Page({ params }: StoryblokPageProps) {
         <div>
             <ConfigHeader blok={header.content as ConfigHeaderProps['blok']} />
             <StoryblokStory story={story} />
-            <ConfigFooter
-                blok={footer.content as ConfigFooterProps['blok']}
-            />{' '}
-            {/* Explicit type casting */}
+            <ConfigFooter blok={footer.content as ConfigFooterProps['blok']} />
         </div>
     );
 }
@@ -105,7 +93,10 @@ export async function generateStaticParams() {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
         version: 'published',
-        resolve_relations: ['global_reference.reference'],
+        resolve_relations: [
+            'global_reference.reference',
+            'popular-articles.articles',
+        ],
     };
     const { data } = await storyblokApi.get('cdn/links/', sbParams);
 

@@ -42,6 +42,14 @@ export default [
                     endOfLine: 'auto',
                 },
             ],
+            '@typescript-eslint/no-unused-expressions': [
+                'error',
+                {
+                    allowShortCircuit: false, // Default value if not set
+                    allowTernary: false, // Default value if not set
+                    allowTaggedTemplates: false, // Default value if not set
+                },
+            ],
             'react/prop-types': 'off',
             'react/react-in-jsx-scope': 'off',
             'sort-keys': 'off',
