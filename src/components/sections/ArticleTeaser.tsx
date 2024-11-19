@@ -10,6 +10,7 @@ interface Article {
     title: string;
     teaser: string;
     slug: string;
+    full_slug: string;
 }
 
 interface ArticleTeaserProps {
@@ -36,7 +37,7 @@ const ArticleTeaser = ({ article }: ArticleTeaserProps) => {
                 </div>
                 <div className="mt-4">
                     <Link
-                        href={`/all-articles/${article.slug}`}
+                        href={`/${article.slug}`}
                         className="mt-4 inline-flex items-center font-semibold text-blue-600 hover:text-neutral-600 lg:mb-0"
                         title="read more"
                     >

@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
-import { getVersion } from '@/utils/getVersion';
 import ArticleTeaser from './ArticleTeaser';
 import { getStoryblokApi, storyblokEditable } from '@storyblok/react/rsc';
 import { AllArticlesProps, ArticleContent, Article } from '../../types/types';
 
-const AllArticles = ({ blok }: AllArticlesProps) => {
+const AllArticles = ({
+    blok,
+    version,
+}: AllArticlesProps & { version: string }) => {
     const [articles, setArticles] = useState<Article[]>([]);
     useEffect(() => {
         const getArticles = async () => {
             const storyblokApi = getStoryblokApi();
+            const validVersion = version as 'draft' | 'published' | undefined;
             const { data } = await storyblokApi.get(`cdn/stories`, {
-                version: getVersion(),
+                version: validVersion,
                 starts_with: 'all-articles/',
                 is_startpage: false,
             });

@@ -7,7 +7,7 @@ import { getStoryblokApi, apiPlugin, storyblokInit } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
 import ConfigHeader from '../../components/sections/ConfigHeader';
 import ConfigFooter from '../../components/sections/ConfigFooter';
-import { getVersion } from '../../utils/getVersion';
+import { headers } from 'next/headers';
 import { ConfigFooterProps } from '../../types/types';
 import { ConfigHeaderProps } from '../../types/types';
 
@@ -29,6 +29,18 @@ storyblokInit({
 
 const isDev = process.env.NODE_ENV === 'development';
 export const revalidate = isDev ? 0 : 3600;
+
+export const getVersion = (): 'published' | 'draft' => {
+    const heads = headers();
+    const pathname = heads.get('x-search-paramethers-url') || '';
+    if (pathname.includes('_storyblok_published')) {
+        return 'published';
+    } else if (pathname.includes('_storyblok')) {
+        return 'draft';
+    } else {
+        return 'published';
+    }
+};
 
 // Data fetching helper function (not exported)
 async function fetchData(slug: string): Promise<StoryblokContent | null> {

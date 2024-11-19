@@ -49,6 +49,7 @@ export interface AllArticlesProps {
 
 export interface ArticleContent {
     slug: string;
+    full_slug: string;
     title: string;
     teaser: string;
     image: {
