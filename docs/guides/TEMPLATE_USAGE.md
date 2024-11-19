@@ -63,3 +63,4 @@ So, to set up components correctly we will work both in `StoryblokProvider.tsx` 
     3.5. Go to the Block Library menu and click on the New Block button. Create a new nestable component with the technical name `global_reference`. Then add a new field of the type References and name it `reference`.
     In the field configuration enter `global/` in Path to folder of stories. Also restrict the content type to `global`:
     ![alt text](../img/global-restrict.png)
+    This step is required for technical needs in the codebase. The goal is to retireve header and footer as the global references for every page and not only as a separate stories.
