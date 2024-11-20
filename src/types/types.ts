@@ -64,3 +64,18 @@ export interface Article {
     content: ArticleContent;
     slug: string;
 }
+
+export interface ArticleTeaser {
+    image: {
+        filename: string;
+        alt: string;
+    };
+    title: string;
+    teaser: string;
+    slug: string;
+    full_slug: string;
+}
+
+export interface ArticleTeaserProps {
+    article: ArticleTeaser;
+}

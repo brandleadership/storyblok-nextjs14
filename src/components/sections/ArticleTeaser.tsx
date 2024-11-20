@@ -1,22 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArticleTeaserProps } from '../../types/types';
 import H2 from '../elements/typography/H2';
 import Text from '../elements/typography/Text';
-
-interface Article {
-    image: {
-        filename: string;
-        alt: string;
-    };
-    title: string;
-    teaser: string;
-    slug: string;
-    full_slug: string;
-}
-
-interface ArticleTeaserProps {
-    article: Article;
-}
 
 const ArticleTeaser = ({ article }: ArticleTeaserProps) => {
     if (!article || !article.image) {
