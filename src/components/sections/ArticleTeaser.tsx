@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '../elements/img/Image';
 import { ArticleTeaserProps } from '../../types/types';
 import H2 from '../elements/typography/H2';
 import Text from '../elements/typography/Text';
@@ -14,7 +14,6 @@ const ArticleTeaser = ({ article }: ArticleTeaserProps) => {
                 <Image
                     width={200}
                     height={200}
-                    className="mb-8 w-full rounded-xl object-cover object-center md:h-36 lg:h-48"
                     src={article.image.filename || ''}
                     alt={article.image.alt || ''}
                 />

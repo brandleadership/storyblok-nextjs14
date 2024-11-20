@@ -1,6 +1,6 @@
 import { ArticleProps } from '../../types/types';
 import RichTextRenderer from '../helpers/RichTextRenderer';
-import Image from 'next/image';
+import Image from '../elements/img/Image';
 import H2 from '../elements/typography/H2';
 import H3 from '../elements/typography/H3';
 
@@ -11,7 +11,6 @@ const Article = ({ blok }: ArticleProps) => {
                 <Image
                     width={200}
                     height={200}
-                    className="mb-10 w-40 rounded object-cover object-center md:h-20"
                     alt={blok?.image?.alt || 'Default image description'}
                     src={blok?.image?.filename || ''}
                 />
