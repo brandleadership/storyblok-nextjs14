@@ -7,9 +7,9 @@ interface HeaderProps {
 }
 
 const Header = ({ blok }: HeaderProps) => (
-    <ContentWidth {...storyblokEditable(blok)}>
-        <header className="px-4 py-2.5 lg:px-6">
-            <nav>
+    <header {...storyblokEditable(blok)}>
+        <ContentWidth>
+            <nav className="py-4">
                 <div className="flex flex-wrap items-center justify-between">
                     <a href={blok.logo_link?.url || undefined}>
                         <img
@@ -40,8 +40,8 @@ const Header = ({ blok }: HeaderProps) => (
                     </div>
                 </div>
             </nav>
-        </header>
-    </ContentWidth>
+        </ContentWidth>
+    </header>
 );
 
 export default Header;

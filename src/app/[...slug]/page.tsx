@@ -1,15 +1,14 @@
+import { apiPlugin, getStoryblokApi, storyblokInit } from '@storyblok/react';
 import type {
     ISbStoriesParams,
     ISbStoryData,
     StoryblokClient,
 } from '@storyblok/react/rsc';
-import { headers } from 'next/headers';
-import { getStoryblokApi, apiPlugin, storyblokInit } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
-import ConfigHeader from '../../components/sections/ConfigHeader';
+import { headers } from 'next/headers';
 import ConfigFooter from '../../components/sections/ConfigFooter';
-import { ConfigFooterProps } from '../../types/types';
-import { ConfigHeaderProps } from '../../types/types';
+import ConfigHeader from '../../components/sections/ConfigHeader';
+import { ConfigFooterProps, ConfigHeaderProps } from '../../types/types';
 
 type StoryblokPageProps = {
     params: { slug?: string[] };
@@ -102,9 +101,7 @@ export async function generateMetadata({ params }: StoryblokPageProps) {
     };
 
     return {
-        metadataBase: new URL(
-            'https://template-storyblok-nextjs14.vercel.app/'
-        ),
+        metadataBase: new URL(`${process.env.SITE_URL}`),
         title: seoMeta.title,
         description: seoMeta.description,
         openGraph: {

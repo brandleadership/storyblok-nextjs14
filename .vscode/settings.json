@@ -3,5 +3,8 @@
     "editor.autoClosingBrackets": "always",
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always"
+    }
 }

@@ -23,6 +23,7 @@ In order to work on this repository on your local machine, follow these steps:
 
     `npm run dev`
 
+
 ## Setup for a new Project
 
 If you want to create a new project based on this template please follow the detailed documentation from the `docs/` folder in the following order:
