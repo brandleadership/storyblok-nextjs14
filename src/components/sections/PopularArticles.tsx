@@ -1,6 +1,7 @@
 import ArticleTeaser from './ArticleTeaser';
 import { storyblokEditable } from '@storyblok/react';
 import { PopularArticlesProps } from '../../types/types';
+import H2 from '../elements/typography/H2';
 
 const PopularArtices = ({ blok }: PopularArticlesProps) => {
     if (!blok.articles || blok.articles.length === 0) {
@@ -8,7 +9,7 @@ const PopularArtices = ({ blok }: PopularArticlesProps) => {
     }
     return (
         <>
-            <h2 className="text-3xl">{blok?.headline || 'Default Title'}</h2>
+            <H2>{blok?.headline || 'Default Title'}</H2>
             <div
                 className="mx-auto grid w-full grid-cols-1 gap-6 md:px-16 lg:grid-cols-3 lg:px-24"
                 {...storyblokEditable(blok)}

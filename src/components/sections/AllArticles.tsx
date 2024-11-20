@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ArticleTeaser from './ArticleTeaser';
 import { getStoryblokApi, storyblokEditable } from '@storyblok/react/rsc';
 import { AllArticlesProps, ArticleContent, Article } from '../../types/types';
+import H2 from '../elements/typography/H2';
 
 const AllArticles = ({
     blok,
@@ -35,7 +36,7 @@ const AllArticles = ({
     }, []);
     return (
         <>
-            <p className="m-8 text-center text-3xl">{blok.headline}</p>
+            <H2>{blok.headline}</H2>
             <div
                 className="mx-auto grid w-full grid-cols-1 gap-6 md:px-16 lg:grid-cols-3 lg:px-24"
                 {...storyblokEditable(blok)}

@@ -1,12 +1,13 @@
 import Link from 'next/link';
-
-interface Image {
-    filename: string;
-    alt: string;
-}
+import Image from 'next/image';
+import H2 from '../elements/typography/H2';
+import Text from '../elements/typography/Text';
 
 interface Article {
-    image: Image;
+    image: {
+        filename: string;
+        alt: string;
+    };
     title: string;
     teaser: string;
     slug: string;
@@ -24,17 +25,15 @@ const ArticleTeaser = ({ article }: ArticleTeaserProps) => {
     return (
         <div className="column feature">
             <div className="p-6">
-                <img
+                <Image
+                    width={200}
+                    height={200}
                     className="mb-8 w-full rounded-xl object-cover object-center md:h-36 lg:h-48"
                     src={article.image.filename || ''}
                     alt={article.image.alt || ''}
                 />
-                <h2 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">
-                    {article?.title}
-                </h2>
-                <div className="mx-auto line-clamp-2 text-base leading-relaxed text-gray-500">
-                    {article.teaser || ''}
-                </div>
+                <H2>{article?.title}</H2>
+                <Text>{article.teaser || ''}</Text>
                 <div className="mt-4">
                     <Link
                         href={`/all-articles/${article.slug}`}
