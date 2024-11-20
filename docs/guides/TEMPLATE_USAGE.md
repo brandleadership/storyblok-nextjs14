@@ -30,7 +30,7 @@ We will work with templates because it is much quicker, but in case you want to 
 Choose the `NextJS-14` Project in Storyblok Dashboard, it is our template project with the set up that matches the structure of the Github template. This will take over all existing configurations and blocks. Make sure you select the "Development Plan".
 ![alt text](../img/dublicate-project.png)
 
-1. **Enter Your Name**
+2. **Enter Your Name**
 
 ![alt text](../img/dublicate-project-name.png)
 
@@ -43,3 +43,34 @@ Here you should from the beginning have a token with the Access level "Preview".
 
 Copy the token value and replace the example value of `NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN` in `.env` file.
 It will allow our project to have access to the Storyblok space and retrieve data.
+
+### Run the Project Locally
+
+1. **Install packages**  
+   Clone repository and run `npm i` to set up the Project locally.
+
+2. **Install Storyblok CLI globally**  
+   Run the following command to install the Storyblok CLI globally on your machine:
+
+    `npm i -g storyblok`
+
+3. **Start Proxy**
+
+    Run the proxy to have a preview in Storyblok
+
+    `npm run proxy`
+
+4. **Start the Project**
+
+    Run the following command to preview the project locally on your machine:
+
+    `npm run dev`
+
+    You project should run on `http://localhost:3000/`
+
+### Next Steps
+
+**To complete the initial template set up please follow the instructions in the documents below**
+
+1. `TYPESCRIPT.md`
+2. `VERCEL.md`

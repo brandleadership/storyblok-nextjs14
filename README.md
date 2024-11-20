@@ -2,7 +2,7 @@
 
 In order to work on this repository on your local machine, follow these steps:
 
-1. **Install project setup**  
+1. **Install packages**  
    Clone repository and run `npm i` to set up the Project locally.
    ❗Make sure you only do that when you want to work on this template, not on a project.
 
@@ -12,12 +12,16 @@ In order to work on this repository on your local machine, follow these steps:
     `npm i -g storyblok`
 
 3. **Start Proxy**
-   Run the proxy to have a preview in Storyblok
-   `npm run proxy`
+
+    Run the proxy to have a preview in Storyblok
+
+    `npm run proxy`
 
 4. **Start the Project**
-   Run the following command to preview the project locally on your machine:
-   `npm run dev`
+
+    Run the following command to preview the project locally on your machine:
+
+    `npm run dev`
 
 ## Setup for a new Project
 
