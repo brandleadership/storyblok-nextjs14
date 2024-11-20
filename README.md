@@ -92,7 +92,7 @@ To create a new Sitemap, the new script was added to the package.json, you could
 
 `npm run build`
 
-`npx next-sitemap --config ./next-sitemap.config.js`
+`npx next-sitemap --config ./next-sitemap.config.mjs`
 
 `npx next-sitemap (preview it locally)`
 

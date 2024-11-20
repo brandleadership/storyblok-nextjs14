@@ -1,4 +1,4 @@
-import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
+import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
 /** @type {import('next-sitemap').IConfig} */
 
@@ -8,9 +8,7 @@ storyblokInit({
 });
 
 const config = {
-    siteUrl:
-        process.env.SITE_URL ||
-        'https://template-storyblok-nextjs14-git-cba320-template-storyblok-next.vercel.app/',
+    siteUrl: process.env.SITE_URL, //main branch
     generateRobotsTxt: true,
     sitemapSize: 5000,
     outDir: './public',
