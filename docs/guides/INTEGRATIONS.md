@@ -7,6 +7,9 @@
 -   [Image Optimization](#image-optimization)
 -   [motion.dev](#motion)
 -   [Algolia](#algolia)
+-   [Mailchimp](#mailchimp)
+-   [Active Campaign](#activecampaign)
+-   [Analytics](#analytics)
 
 ## Tailwind
 
@@ -50,3 +53,24 @@ As an animation library, [motion.dev](https://motion.dev/) (previously Framer Mo
 ## Algolia
 
 [Algolia](https://www.algolia.com/) is the recommended Search Functionality for Storyblok Projects. To be documented.
+
+## Mailchimp
+
+To be documented.
+
+## Activecampaign
+
+To be documented in more detail.
+
+2 Links with information on how to set up a form component with Active Campaign:
+
+-   https://dev.to/saragibby/better-way-to-embed-active-campaign-forms-into-react-n9n
+-   https://dev.to/saragibby/better-way-to-embed-active-campaign-forms-into-react-n9n
+
+## Analytics
+
+To be documented.
+
+Helpful links:
+
+-   https://nextjs.org/docs/pages/building-your-application/optimizing/third-party-libraries#google-tag-manager
