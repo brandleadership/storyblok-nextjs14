@@ -1,8 +1,8 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { HeroStoryblok } from '../../../component-types-sb';
-import H1 from '../elements/typography/H1';
-import Text from '../elements/typography/Text';
-import ContentWidth from '../layouts/ContentWidth';
+import { HeroStoryblok } from '../../../../component-types-sb';
+import H1 from '../../elements/typography/H1';
+import Text from '../../elements/typography/Text';
+import ContentWidth from '../../layouts/ContentWidth';
 
 const Hero = ({ blok }: HeroStoryblok) => (
     <section {...storyblokEditable(blok)}>

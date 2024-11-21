@@ -21,7 +21,7 @@ import Text from '../elements/typography/Text';
 import Blockquote from '../elements/typography/Blockquote';
 
 interface RichTextRendererProps {
-    text: string | object | null; // Allow for rich text objects or null
+    text: string | object | null;
     customStyles?: string;
 }
 
@@ -42,12 +42,10 @@ interface NodeHeadingProps {
 }
 
 const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
-    // Add safety check for `props.text`
     if (!props.text) {
-        return <p>No content available</p>; // Handle the case when text is null or undefined
+        return <p>No content available</p>;
     }
 
-    // Ensure `props.text` is an object suitable for the `render` function
     try {
         return (
             <div className={`richtext ${props.customStyles}`}>

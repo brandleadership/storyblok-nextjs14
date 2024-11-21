@@ -1,19 +1,18 @@
 'use client';
 
-import { storyblokInit, apiPlugin } from '@storyblok/react/rsc';
+import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 import { ReactNode } from 'react';
 /** Import your components */
-import Page from './sections/Page';
+import AllArticles from './sections/Articles/AllArticles';
+import Article from './sections/Articles/Article';
+import PopularArtices from './sections/Articles/PopularArticles';
+import ConfigFooter from './sections/Footer/ConfigFooter';
+import Footer from './sections/Footer/Footer';
 import Global from './sections/Global';
-import ConfigHeader from './sections/ConfigHeader';
-import ConfigFooter from './sections/ConfigFooter';
-import Header from './sections/Header';
-import Footer from './sections/Footer';
-import Hero from './sections/Hero';
-import RichtextExample from './sections/RichtextExample';
-import Article from './sections/Article';
-import AllArticles from './sections/AllArticles';
-import PopularArtices from './sections/PopularArticles';
+import ConfigHeader from './sections/Header/ConfigHeader';
+import Header from './sections/Header/Header';
+import Hero from './sections/Hero/Hero';
+import Page from './sections/Page';
 
 interface StoryblokProviderProps {
     children: ReactNode;
@@ -27,7 +26,6 @@ const components = {
     header: Header,
     footer: Footer,
     hero: Hero,
-    richtext_example: RichtextExample,
     article: Article,
     'all-articles': AllArticles,
     'popular-articles': PopularArtices,

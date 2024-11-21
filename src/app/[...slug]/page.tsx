@@ -6,8 +6,8 @@ import type {
 } from '@storyblok/react/rsc';
 import StoryblokStory from '@storyblok/react/story';
 import { headers } from 'next/headers';
-import ConfigFooter from '../../components/sections/ConfigFooter';
-import ConfigHeader from '../../components/sections/ConfigHeader';
+import ConfigFooter from '../../components/sections/Footer/ConfigFooter';
+import ConfigHeader from '../../components/sections/Header/ConfigHeader';
 import { ConfigFooterProps, ConfigHeaderProps } from '../../types/types';
 
 type StoryblokPageProps = {

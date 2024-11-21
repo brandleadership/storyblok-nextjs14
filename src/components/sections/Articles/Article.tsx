@@ -1,14 +1,14 @@
-import { ArticleProps } from '../../types/types';
-import RichTextRenderer from '../helpers/RichTextRenderer';
-import Image from '../elements/img/Image';
-import H2 from '../elements/typography/H2';
-import H3 from '../elements/typography/H3';
+import { ArticleProps } from '../../../types/types';
+import BaseImage from '../../elements/img/Image';
+import H2 from '../../elements/typography/H2';
+import H3 from '../../elements/typography/H3';
+import RichTextRenderer from '../../helpers/RichTextRenderer';
 
 const Article = ({ blok }: ArticleProps) => {
     return (
         <section className="body-font text-gray-600">
             <div className="container mx-auto flex flex-col items-center justify-center px-5 py-24">
-                <Image
+                <BaseImage
                     width={200}
                     height={200}
                     alt={blok?.image?.alt || 'Default image description'}
