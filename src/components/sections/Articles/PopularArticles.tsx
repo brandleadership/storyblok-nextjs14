@@ -20,11 +20,15 @@ const PopularArtices = ({ blok }: PopularArticlesProps) => {
                         typeof article === 'string'
                             ? { slug: article }
                             : article.content;
+
                     articleContent.slug = article.slug;
+
+                    const uniqueKey = `popular-${article.uuid}`;
+
                     return (
                         <ArticleTeaser
                             article={article.content}
-                            key={article.uuid}
+                            key={uniqueKey}
                         />
                     );
                 })}

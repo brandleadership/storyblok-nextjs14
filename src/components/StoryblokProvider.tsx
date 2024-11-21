@@ -8,11 +8,11 @@ import Article from './sections/Articles/Article';
 import PopularArtices from './sections/Articles/PopularArticles';
 import ConfigFooter from './sections/Footer/ConfigFooter';
 import Footer from './sections/Footer/Footer';
-import Global from './sections/Global';
+import Global from './page-wrappers/Global';
 import ConfigHeader from './sections/Header/ConfigHeader';
 import Header from './sections/Header/Header';
 import Hero from './sections/Hero/Hero';
-import Page from './sections/Page';
+import Page from './page-wrappers/Page';
 
 interface StoryblokProviderProps {
     children: ReactNode;
