@@ -5,7 +5,7 @@
 In order to work on this repository on your local machine, follow these steps:
 
 1. **Create Project in Vercel**  
-   Choose the correct team where you would like to have the project and click "Create Project"
+   Choose the correct team (by default it should be the GateB Team) where you would like to have the project and click "Create Project"
    ![alt text](../img/vercel-create-project.png)
 
 2. **Import Github Repo**  
@@ -30,8 +30,8 @@ In order to work on this repository on your local machine, follow these steps:
    Go to the Storyblok admin panel: Settings > Visual Editor.
    Here you have to set up visual editor links for you project. Base requirements will be covered by 3 links:
    Local Dev - https://localhost:3010/ - the preview for local build for developers.
-   Main Branch - YOUR_LINK_TO_VERCEL_MAIN_BRANCH_DEPLOYMENT - the preview for main stable branch and production site (if the site is live), for managers' and content editors' usage.
-   Develop Branch - YOUR_LINK_TO_VERCEL_DEVELOP_BRANCH_DEPLOYMENT - the preview for develop branch, should be used for testing features before pushing them to production.
+   Main Branch - `YOUR_LINK_TO_VERCEL_MAIN_BRANCH_DEPLOYMENT` - the preview for main stable branch and production site (if the site is live), for managers' and content editors' usage.
+   Develop Branch - `YOUR_LINK_TO_VERCEL_DEVELOP_BRANCH_DEPLOYMENT` - the preview for develop branch, should be used for testing features before pushing them to production.
    ![alt text](../img/storyblok-visual-editor.png)
 
 6. **Add Webhooks in Storyblok**  
