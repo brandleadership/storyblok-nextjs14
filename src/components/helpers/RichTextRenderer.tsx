@@ -65,7 +65,7 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                                 return (
                                     <a
                                         href={`mailto:${href}`}
-                                        className="text-primary"
+                                        className="text-primary-800 underline"
                                     >
                                         {children}
                                     </a>
@@ -75,7 +75,7 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                                 return (
                                     <a
                                         tabIndex={1}
-                                        className="text-primary"
+                                        className="text-primary-800 underline"
                                         href={href}
                                         target={target}
                                     >
@@ -86,7 +86,7 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                             return (
                                 <a
                                     tabIndex={1}
-                                    className="text-primary"
+                                    className="text-primary-800 underline"
                                     target={target}
                                     href={href}
                                 >
@@ -127,7 +127,11 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                             </ol>
                         ),
                         [NODE_LI]: (children: React.ReactNode) => (
-                            <li className="px-2 py-2">{children}</li>
+                            <li className="list-inside px-2 py-2">
+                                <div className="inline-block text-base xl:text-lg 2xl:text-xl">
+                                    {children}
+                                </div>
+                            </li>
                         ),
                         [NODE_HEADING]: (
                             children: React.ReactNode,
