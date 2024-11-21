@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
+import { FooterStoryblok } from '../../../../component-types-sb';
+import { ConfigFooterProps } from '../../../types/types';
 import Footer from './Footer';
-import { ConfigFooterProps } from '../../types/types';
-import { FooterStoryblok } from '../../../component-types-sb';
 
 // Type guard to check if a blok is of type FooterStoryblok
 const isFooterBlok = (blok: any): blok is FooterStoryblok =>

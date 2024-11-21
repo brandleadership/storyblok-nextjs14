@@ -21,7 +21,7 @@ import Text from '../elements/typography/Text';
 import Blockquote from '../elements/typography/Blockquote';
 
 interface RichTextRendererProps {
-    text: string | object | null; // Allow for rich text objects or null
+    text: string | object | null;
     customStyles?: string;
 }
 
@@ -42,12 +42,10 @@ interface NodeHeadingProps {
 }
 
 const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
-    // Add safety check for `props.text`
     if (!props.text) {
-        return <p>No content available</p>; // Handle the case when text is null or undefined
+        return <p>No content available</p>;
     }
 
-    // Ensure `props.text` is an object suitable for the `render` function
     try {
         return (
             <div className={`richtext ${props.customStyles}`}>
@@ -67,7 +65,7 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                                 return (
                                     <a
                                         href={`mailto:${href}`}
-                                        className="text-primary"
+                                        className="text-primary-800 underline"
                                     >
                                         {children}
                                     </a>
@@ -77,7 +75,7 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                                 return (
                                     <a
                                         tabIndex={1}
-                                        className="text-primary"
+                                        className="text-primary-800 underline"
                                         href={href}
                                         target={target}
                                     >
@@ -88,7 +86,7 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                             return (
                                 <a
                                     tabIndex={1}
-                                    className="text-primary"
+                                    className="text-primary-800 underline"
                                     target={target}
                                     href={href}
                                 >
@@ -129,7 +127,11 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = (props) => {
                             </ol>
                         ),
                         [NODE_LI]: (children: React.ReactNode) => (
-                            <li className="px-2 py-2">{children}</li>
+                            <li className="list-inside px-2 py-2">
+                                <div className="inline-block text-base xl:text-lg 2xl:text-xl">
+                                    {children}
+                                </div>
+                            </li>
                         ),
                         [NODE_HEADING]: (
                             children: React.ReactNode,

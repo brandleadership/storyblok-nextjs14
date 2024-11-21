@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import Image from '../elements/img/Image';
-import { ArticleTeaserProps } from '../../types/types';
-import H2 from '../elements/typography/H2';
-import Text from '../elements/typography/Text';
+import { ArticleTeaserProps } from '../../../types/types';
+import BaseImage from '../../elements/img/Image';
+import H2 from '../../elements/typography/H2';
+import Text from '../../elements/typography/Text';
 
 const ArticleTeaser = ({ article }: ArticleTeaserProps) => {
     if (!article || !article.image) {
@@ -11,7 +11,8 @@ const ArticleTeaser = ({ article }: ArticleTeaserProps) => {
     return (
         <div className="column feature">
             <div className="p-6">
-                <Image
+                <BaseImage
+                    className="h-auto w-60"
                     width={200}
                     height={200}
                     src={article.image.filename || ''}

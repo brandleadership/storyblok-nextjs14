@@ -1,6 +1,6 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { HeaderStoryblok } from '../../../component-types-sb';
-import ContentWidth from '../layouts/ContentWidth';
+import { HeaderStoryblok } from '../../../../component-types-sb';
+import ContentWidth from '../../layouts/ContentWidth';
 
 interface HeaderProps {
     blok: HeaderStoryblok;

@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
-import { FooterStoryblok } from '../../../component-types-sb';
-import ContentWidth from '../layouts/ContentWidth';
-import Text from '../elements/typography/Text';
+import { FooterStoryblok } from '../../../../component-types-sb';
+import Text from '../../elements/typography/Text';
+import ContentWidth from '../../layouts/ContentWidth';
 
 interface FooterProps {
     blok: FooterStoryblok;
