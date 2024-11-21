@@ -1,6 +1,9 @@
 import {
     RichtextExampleStoryblok,
     GlobalStoryblok,
+    ArticleStoryblok,
+    PopularArticlesStoryblok,
+    AllArticlesStoryblok,
 } from '../../component-types-sb';
 
 //footer types
@@ -25,4 +28,54 @@ export interface GlobalProps {
 
 export interface RichTextProps {
     blok: RichtextExampleStoryblok;
+}
+
+// article
+
+export interface ArticleProps {
+    blok: ArticleStoryblok;
+}
+
+//popular articles
+
+export interface PopularArticlesProps {
+    blok: PopularArticlesStoryblok;
+}
+
+// all articles
+export interface AllArticlesProps {
+    blok: AllArticlesStoryblok;
+}
+
+export interface ArticleContent {
+    slug: string;
+    full_slug: string;
+    title: string;
+    teaser: string;
+    image: {
+        filename: string;
+        alt: string;
+    };
+    [k: string]: any;
+}
+
+export interface Article {
+    uuid: string;
+    content: ArticleContent;
+    slug: string;
+}
+
+export interface ArticleTeaser {
+    image: {
+        filename: string;
+        alt: string;
+    };
+    title: string;
+    teaser: string;
+    slug: string;
+    full_slug: string;
+}
+
+export interface ArticleTeaserProps {
+    article: ArticleTeaser;
 }

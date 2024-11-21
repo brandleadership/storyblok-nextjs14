@@ -11,6 +11,9 @@ import Header from './sections/Header';
 import Footer from './sections/Footer';
 import Hero from './sections/Hero';
 import RichtextExample from './sections/RichtextExample';
+import Article from './sections/Article';
+import AllArticles from './sections/AllArticles';
+import PopularArtices from './sections/PopularArticles';
 
 interface StoryblokProviderProps {
     children: ReactNode;
@@ -25,6 +28,9 @@ const components = {
     footer: Footer,
     hero: Hero,
     richtext_example: RichtextExample,
+    article: Article,
+    'all-articles': AllArticles,
+    'popular-articles': PopularArtices,
 };
 
 /** 2. Initialize it as usual */

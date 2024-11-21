@@ -13,7 +13,7 @@ const Header = ({ blok }: HeaderProps) => (
                 <div className="flex flex-wrap items-center justify-between">
                     <a href={blok.logo_link?.url || undefined}>
                         <img
-                            src={blok.logo?.filename || undefined} // Use fallback to undefined if filename is null
+                            src={blok.logo?.filename || undefined}
                             className="w-20"
                             alt={blok.logo?.alt || 'Logo'}
                         />

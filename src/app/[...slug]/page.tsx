@@ -46,7 +46,10 @@ async function fetchData(slug: string): Promise<StoryblokContent | null> {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
         version: getVersion(),
-        resolve_relations: ['global_reference.reference'],
+        resolve_relations: [
+            'global_reference.reference',
+            'popular-articles.articles',
+        ],
     };
 
     const storyblokApi: StoryblokClient = getStoryblokApi();
@@ -144,7 +147,10 @@ export async function generateStaticParams() {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
         version: 'published',
-        resolve_relations: ['global_reference.reference'],
+        resolve_relations: [
+            'global_reference.reference',
+            'popular-articles.articles',
+        ],
     };
     const { data } = await storyblokApi.get('cdn/links/', sbParams);
 
