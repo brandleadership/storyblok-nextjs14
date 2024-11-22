@@ -34,6 +34,10 @@ Choose the `NextJS-14` Project in Storyblok Dashboard, it is our template projec
 
 ![alt text](../img/dublicate-project-name.png)
 
+3. **Add New Partner's Project**
+
+By default your duplicated space will be added to your projects. To make is not your project, but one of the Partner's Projects please click the button "Add Space" and choose "Partner Space" and then "Add an existing Space", and add the space you has recently duplicated.
+
 ### Connect Storyblok to the Github Project
 
 Go to Storyblok settings in your project: Settings > Access token.
