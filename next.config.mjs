@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'a.storyblok.com',
+                pathname: '/**',
+            },
+        ],
+    },
     eslint: {
         // Disabling on production builds because we're running checks on PRs via GitHub Actions.
         ignoreDuringBuilds: true,

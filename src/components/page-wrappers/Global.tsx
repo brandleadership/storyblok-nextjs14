@@ -1,4 +1,4 @@
-import { storyblokEditable, StoryblokComponent } from '@storyblok/react/rsc';
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc';
 import { GlobalProps } from '../../types/types';
 
 const Global = ({ blok }: GlobalProps) => {

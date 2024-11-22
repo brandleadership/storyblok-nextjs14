@@ -1,6 +1,74 @@
 {
     "components": [
         {
+            "name": "all-articles",
+            "display_name": null,
+            "created_at": "2024-11-15T14:25:33.058Z",
+            "updated_at": "2024-11-15T14:25:45.947Z",
+            "id": 6565886,
+            "schema": {
+                "headline": {
+                    "type": "text",
+                    "pos": 0
+                }
+            },
+            "image": null,
+            "preview_field": null,
+            "is_root": false,
+            "preview_tmpl": null,
+            "is_nestable": true,
+            "all_presets": [],
+            "preset_id": null,
+            "real_name": "all-articles",
+            "component_group_uuid": "all",
+            "color": null,
+            "icon": null,
+            "internal_tags_list": [],
+            "internal_tag_ids": [],
+            "content_type_asset_preview": null,
+            "component_group_name": ""
+        },
+        {
+            "name": "article",
+            "display_name": null,
+            "created_at": "2024-11-15T14:10:30.679Z",
+            "updated_at": "2024-11-15T14:16:34.509Z",
+            "id": 6565783,
+            "schema": {
+                "image": {
+                    "type": "asset",
+                    "pos": 0
+                },
+                "title": {
+                    "type": "text",
+                    "pos": 1
+                },
+                "teaser": {
+                    "type": "textarea",
+                    "pos": 2
+                },
+                "content": {
+                    "type": "richtext",
+                    "pos": 3
+                }
+            },
+            "image": null,
+            "preview_field": null,
+            "is_root": true,
+            "preview_tmpl": null,
+            "is_nestable": false,
+            "all_presets": [],
+            "preset_id": null,
+            "real_name": "article",
+            "component_group_uuid": "all",
+            "color": null,
+            "icon": null,
+            "internal_tags_list": [],
+            "internal_tag_ids": [],
+            "content_type_asset_preview": null,
+            "component_group_name": ""
+        },
+        {
             "name": "footer",
             "display_name": null,
             "created_at": "2024-11-05T13:27:41.068Z",
@@ -208,6 +276,42 @@
             "internal_tags_list": [],
             "internal_tag_ids": [],
             "content_type_asset_preview": null
+        },
+        {
+            "name": "popular-articles",
+            "display_name": null,
+            "created_at": "2024-11-15T14:18:03.117Z",
+            "updated_at": "2024-11-15T14:23:37.304Z",
+            "id": 6565818,
+            "schema": {
+                "headline": {
+                    "type": "text",
+                    "pos": 0
+                },
+                "articles": {
+                    "type": "options",
+                    "pos": 1,
+                    "source": "internal_stories",
+                    "folder_slug": "all-articles/",
+                    "filter_content_type": ["article"],
+                    "max_options": "3"
+                }
+            },
+            "image": null,
+            "preview_field": null,
+            "is_root": false,
+            "preview_tmpl": null,
+            "is_nestable": true,
+            "all_presets": [],
+            "preset_id": null,
+            "real_name": "popular-articles",
+            "component_group_uuid": "all",
+            "color": null,
+            "icon": null,
+            "internal_tags_list": [],
+            "internal_tag_ids": [],
+            "content_type_asset_preview": null,
+            "component_group_name": ""
         },
         {
             "name": "richtext_example",

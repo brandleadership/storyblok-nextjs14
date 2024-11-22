@@ -5,15 +5,17 @@ export default function BaseImage({
     height,
     src,
     alt,
+    className,
 }: {
     width: number;
     height: number;
     src: string;
     alt: string;
+    className?: string;
 }) {
     return (
         <Image
-            className="img-cover"
+            className={className}
             width={width}
             height={height}
             src={src}

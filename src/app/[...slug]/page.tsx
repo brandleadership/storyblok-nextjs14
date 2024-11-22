@@ -1,15 +1,14 @@
+import { apiPlugin, getStoryblokApi, storyblokInit } from '@storyblok/react';
 import type {
     ISbStoriesParams,
     ISbStoryData,
     StoryblokClient,
 } from '@storyblok/react/rsc';
-import { headers } from 'next/headers';
-import { getStoryblokApi, apiPlugin, storyblokInit } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
-import ConfigHeader from '../../components/sections/ConfigHeader';
-import ConfigFooter from '../../components/sections/ConfigFooter';
-import { ConfigFooterProps } from '../../types/types';
-import { ConfigHeaderProps } from '../../types/types';
+import { headers } from 'next/headers';
+import ConfigFooter from '../../components/sections/Footer/ConfigFooter';
+import ConfigHeader from '../../components/sections/Header/ConfigHeader';
+import { ConfigFooterProps, ConfigHeaderProps } from '../../types/types';
 
 type StoryblokPageProps = {
     params: { slug?: string[] };
@@ -47,7 +46,10 @@ async function fetchData(slug: string): Promise<StoryblokContent | null> {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
         version: getVersion(),
-        resolve_relations: ['global_reference.reference'],
+        resolve_relations: [
+            'global_reference.reference',
+            'popular-articles.articles',
+        ],
     };
 
     const storyblokApi: StoryblokClient = getStoryblokApi();
@@ -102,9 +104,7 @@ export async function generateMetadata({ params }: StoryblokPageProps) {
     };
 
     return {
-        metadataBase: new URL(
-            'https://template-storyblok-nextjs14.vercel.app/'
-        ),
+        metadataBase: new URL(`${process.env.SITE_URL}`),
         title: seoMeta.title,
         description: seoMeta.description,
         openGraph: {
@@ -147,7 +147,10 @@ export async function generateStaticParams() {
     const sbParams: ISbStoriesParams = {
         resolve_links: 'url',
         version: 'published',
-        resolve_relations: ['global_reference.reference'],
+        resolve_relations: [
+            'global_reference.reference',
+            'popular-articles.articles',
+        ],
     };
     const { data } = await storyblokApi.get('cdn/links/', sbParams);
 

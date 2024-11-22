@@ -1,7 +1,7 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
+import { HeaderStoryblok } from '../../../../component-types-sb';
+import { ConfigHeaderProps } from '../../../types/types';
 import Header from './Header';
-import { ConfigHeaderProps } from '../../types/types';
-import { HeaderStoryblok } from '../../../component-types-sb';
 
 // Type guard to check if a blok is of type HeaderStoryblok
 const isHeaderBlok = (blok: any): blok is HeaderStoryblok =>
