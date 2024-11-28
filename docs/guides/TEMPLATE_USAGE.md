@@ -36,7 +36,22 @@ Choose the `NextJS-14` Project in Storyblok Dashboard, it is our template projec
 
 3. **Add New Partner's Project**
 
-By default your duplicated space will be added to your projects. To make is not your project, but one of the Partner's Projects please click the button "Add Space" and choose "Partner Space" and then "Add an existing Space", and add the space you has recently duplicated.
+By default your duplicated space will be added to your projects in "My Spaces" section. To make is not only your project, but one of the Partner's Projects please click the button "Add Space" and choose "Partner Space" and then "Add an existing Space", and add the space you has recently duplicated.
+
+![alt text](../img/spaces.png)
+![alt text](../img/add-space.png)
+
+4. **Copy the Blocks**
+
+Because the space is copied without content blocks we need to copy them separately. To do that go to the template project, in our case to NextJS-14, open Block Library, choose all the blocks and press "Copy"
+
+![alt text](../img/copy-content-blocks.png)
+
+Then go to the Block Library in your freshly created project and press "Paste here". If you don't see this button most likely the components were not copied correctly, so please repeat the previous step.
+
+![alt text](../img/paste-blocks.png)
+
+Great, now we are ready to connect out Storyblok project to the codebase.
 
 ### Connect Storyblok to the Github Project
 
